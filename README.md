@@ -5,6 +5,18 @@
 
 <!-- badges: start -->
 
+[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/broomExtra)](https://CRAN.R-project.org/package=broomExtra)
+[![CRAN
+Checks](https://cranchecks.info/badges/summary/broomExtra)](https://cran.r-project.org/web/checks/check_results_broomExtra.html)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.2.9000-orange.svg?style=flat-square)](commits/master)
+[![Daily downloads
+badge](https://cranlogs.r-pkg.org/badges/last-day/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)
+[![Weekly downloads
+badge](https://cranlogs.r-pkg.org/badges/last-week/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)
+[![Monthly downloads
+badge](https://cranlogs.r-pkg.org/badges/last-month/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)
+[![Total downloads
+badge](https://cranlogs.r-pkg.org/badges/grand-total/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/broomExtra?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/broomExtra)
 [![Travis build
@@ -16,10 +28,11 @@ Status](https://coveralls.io/repos/github/IndrajeetPatil/broomExtra/badge.svg?br
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--03--06-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--04--03-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
+\[![dependencies](https://tinyverse.netlify.com/badge/broomExtra)
 <!-- badges: end -->
 
 The goal of `broomExtra` is to provide helper functions that assist in
@@ -27,7 +40,38 @@ data analysis workflows involving packages `broom` and `broom.mixed`.
 
 # Installation
 
-You can install the development version of `broomExtra` from GitHub:
+To get the latest, stable `CRAN` release (`0.0.2`):
+
+``` r
+utils::install.packages(pkgs = "broomExtra")
+```
+
+You can get the **development** version of the package from GitHub
+(`0.0.2.9000`). To see what new changes (and bug fixes) have been made
+to the package since the last release on `CRAN`, you can check the
+detailed log of changes here:
+<https://indrajeetpatil.github.io/broomExtra/news/index.html>
+
+If you are in hurry and want to reduce the time of installation, prefer-
+
+``` r
+# needed package to download from GitHub repo
+utils::install.packages(pkgs = "remotes")
+remotes::install_github(
+  repo = "IndrajeetPatil/broomExtra", # package path on GitHub
+  quick = TRUE                        # skips docs, demos, and vignettes
+) 
+```
+
+If time is not a constraint-
+
+``` r
+remotes::install_github(
+  repo = "IndrajeetPatil/broomExtra", # package path on GitHub
+  dependencies = TRUE,                # installs packages which broomExtra depends on
+  upgrade_dependencies = TRUE         # updates any out of date dependencies
+)
+```
 
 ``` r
 remotes::install_github("IndrajeetPatil/broomExtra")
@@ -93,16 +137,15 @@ broomExtra::tidy(
   conf.type = "Wald"
 )
 #> # A tibble: 7 x 8
-#>   term  estimate std.error statistic  p.value conf.low conf.high
-#>   <chr>    <dbl>     <dbl>     <dbl>    <dbl>    <dbl>     <dbl>
-#> 1 1|2      0.244     0.545    -2.59  9.66e- 3   0.0837     0.710
-#> 2 2|3      3.14      0.510     2.24  2.48e- 2   1.16       8.52 
-#> 3 3|4     29.3       0.638     5.29  1.21e- 7   8.38     102.   
-#> 4 4|5    140.        0.751     6.58  4.66e-11  32.1      610.   
-#> 5 temp~   10.2       0.701     3.31  9.28e- 4   2.58      40.2  
-#> 6 cont~    3.85      0.660     2.04  4.13e- 2   1.05      14.0  
-#> 7 temp~    1.43      0.924     0.389 6.97e- 1   0.234      8.76 
-#> # ... with 1 more variable: coefficient_type <chr>
+#>   term   estimate std.error statistic  p.value conf.low conf.high coef.type
+#>   <chr>     <dbl>     <dbl>     <dbl>    <dbl>    <dbl>     <dbl> <chr>    
+#> 1 1|2       0.244     0.545    -2.59  9.66e- 3   0.0837     0.710 intercept
+#> 2 2|3       3.14      0.510     2.24  2.48e- 2   1.16       8.52  intercept
+#> 3 3|4      29.3       0.638     5.29  1.21e- 7   8.38     102.    intercept
+#> 4 4|5     140.        0.751     6.58  4.66e-11  32.1      610.    intercept
+#> 5 tempw~   10.2       0.701     3.31  9.28e- 4   2.58      40.2   location 
+#> 6 conta~    3.85      0.660     2.04  4.13e- 2   1.05      14.0   location 
+#> 7 tempw~    1.43      0.924     0.389 6.97e- 1   0.234      8.76  location
 
 # unsupported object (the function will return `NULL` in such cases)
 x <- c(2, 2:4, 4, 4, 5, 5, 7, 7, 7)
@@ -135,20 +178,20 @@ broomExtra::glance(lmm.mod)
 # linear model
 lm.mod <- lm(Reaction ~ Days, sleepstudy)
 broomExtra::glance(lm.mod)
-#> # A tibble: 1 x 11
+#> # A tibble: 1 x 12
 #>   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
 #>       <dbl>         <dbl> <dbl>     <dbl>    <dbl> <dbl>  <dbl> <dbl> <dbl>
 #> 1     0.286         0.282  47.7      71.5 9.89e-15     1  -950. 1906. 1916.
-#> # ... with 2 more variables: deviance <dbl>, df.residual <int>
+#> # ... with 3 more variables: deviance <dbl>, df.residual <int>, nobs <int>
 
 # another example with `broom`
 # cumulative Link Models
 clm.mod <- clm(rating ~ temp * contact, data = wine)
 broomExtra::glance(clm.mod)
-#> # A tibble: 1 x 5
-#>     edf logLik   AIC   BIC df.residual
-#>   <int>  <dbl> <dbl> <dbl>       <dbl>
-#> 1     7  -86.4  187.  203.          65
+#> # A tibble: 1 x 6
+#>     edf   AIC   BIC logLik df.residual  nobs
+#>   <int> <dbl> <dbl>  <dbl>       <dbl> <dbl>
+#> 1     7  187.  203.  -86.4          65    72
 
 # in case no glance method is available (`NULL` will be returned)
 broomExtra::glance(stats::anova(stats::lm(wt ~ am, mtcars)))
@@ -225,7 +268,7 @@ broomExtra::augment(stats::anova(stats::lm(wt ~ am, mtcars)))
 #> NULL
 ```
 
-# `grouped_` version of variant functions
+# `grouped_` variants of generics
 
 `grouped` variants of the generic functions (`tidy`, `glance`, and
 `augment`) make it easy to execute the same analysis for all
@@ -280,13 +323,13 @@ broomExtra::grouped_tidy(
 #>    <ord> <chr>  <chr> <chr>    <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
 #>  1 Fair  fixed  <NA>  carat  3.80e+3      228.      16.7    3212.     4387.
 #>  2 Fair  ran_p~ color sd__~  2.16e+3       NA       NA        NA        NA 
-#>  3 Fair  ran_p~ color sd__~  2.54e+3       NA       NA        NA        NA 
-#>  4 Fair  ran_p~ color cor_~ -9.75e-1       NA       NA        NA        NA 
+#>  3 Fair  ran_p~ color cor_~ -9.75e-1       NA       NA        NA        NA 
+#>  4 Fair  ran_p~ color sd__~  2.54e+3       NA       NA        NA        NA 
 #>  5 Fair  ran_p~ Resi~ sd__~  1.83e+3       NA       NA        NA        NA 
 #>  6 Good  fixed  <NA>  carat  9.22e+3      105.      87.6    8946.     9488.
 #>  7 Good  ran_p~ color sd__~  2.69e+3       NA       NA        NA        NA 
-#>  8 Good  ran_p~ color sd__~  1.61e+3       NA       NA        NA        NA 
-#>  9 Good  ran_p~ color cor_~  9.98e-1       NA       NA        NA        NA 
+#>  8 Good  ran_p~ color cor_~  9.98e-1       NA       NA        NA        NA 
+#>  9 Good  ran_p~ color sd__~  1.61e+3       NA       NA        NA        NA 
 #> 10 Good  ran_p~ Resi~ sd__~  1.37e+3       NA       NA        NA        NA 
 #> # ... with 15 more rows
 ```
@@ -305,7 +348,7 @@ broomExtra::grouped_glance(
   ..f = stats::lm,
   na.action = na.omit
 )
-#> # A tibble: 35 x 13
+#> # A tibble: 35 x 14
 #>    cut   color r.squared adj.r.squared sigma statistic   p.value    df
 #>    <ord> <ord>     <dbl>         <dbl> <dbl>     <dbl>     <dbl> <dbl>
 #>  1 Fair  D         0.884         0.883 1857.      641. 4.45e- 41     1
@@ -318,8 +361,8 @@ broomExtra::grouped_glance(
 #>  8 Good  D         0.860         0.860 1729.     2065. 2.66e-145     1
 #>  9 Good  E         0.870         0.870 1674.     3084. 2.50e-206     1
 #> 10 Good  F         0.873         0.873 1677.     3110. 1.76e-204     1
-#> # ... with 25 more rows, and 5 more variables: logLik <dbl>, AIC <dbl>,
-#> #   BIC <dbl>, deviance <dbl>, df.residual <int>
+#> # ... with 25 more rows, and 6 more variables: logLik <dbl>, AIC <dbl>,
+#> #   BIC <dbl>, deviance <dbl>, df.residual <int>, nobs <int>
 
 # linear mixed effects model (model summaries across grouping combinations)
 broomExtra::grouped_glance(
