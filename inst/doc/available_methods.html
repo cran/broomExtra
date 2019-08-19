@@ -7,12 +7,13 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="author" content="Indrajeet Patil" />
 
-<meta name="date" content="2019-06-25" />
+<meta name="date" content="2019-08-19" />
 
 <title>Available methods</title>
 
@@ -96,7 +97,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -303,7 +304,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Available methods</h1>
 <h4 class="author">Indrajeet Patil</h4>
-<h4 class="date">2019-06-25</h4>
+<h4 class="date">2019-08-19</h4>
 
 
 <div id="TOC">
@@ -689,94 +690,106 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left"></td>
 </tr>
 <tr class="even">
+<td align="left">glmrob</td>
+<td align="left">x</td>
+<td align="left"></td>
+<td align="left">x</td>
+</tr>
+<tr class="odd">
 <td align="left">gls</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left">x</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">gmm</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">htest</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left">x</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">ivreg</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left">x</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">kappa</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">kde</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">kmeans</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left">x</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">lavaan</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">list</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">lm</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left">x</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">lm.beta</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">lmList4</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">lmRob</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left">x</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">lme</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left">x</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">lmodel2</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">lmrob</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
 </tr>
 <tr class="odd">
 <td align="left">lsmobj</td>
@@ -1007,102 +1020,120 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <td align="left"></td>
 </tr>
 <tr class="odd">
+<td align="left">speedglm</td>
+<td align="left">x</td>
+<td align="left">x</td>
+<td align="left">x</td>
+</tr>
+<tr class="even">
 <td align="left">speedlm</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left">x</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">stanfit</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">stanreg</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">summary.glht</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">summary.lm</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">summary.lm.beta</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
+<tr class="even">
+<td align="left">summary.manova</td>
+<td align="left">x</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
 <tr class="odd">
+<td align="left">summary_emm</td>
+<td align="left">x</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
 <td align="left">survdiff</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">survexp</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">survfit</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">survreg</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left">x</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">svyglm</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">svyolr</td>
 <td align="left">x</td>
 <td align="left">x</td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">systemfit</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">table</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">ts</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">vfold_cv</td>
 <td align="left">x</td>
 <td align="left"></td>
 <td align="left"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">zoo</td>
 <td align="left">x</td>
 <td align="left"></td>
@@ -1112,6 +1143,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </table>
 </div>
 
+
+
+<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

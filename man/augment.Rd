@@ -20,6 +20,10 @@ Check if a \code{augment} method exits for a given object, either in
 \code{broom} or in \code{broom.mixed}. If it does, return the model summary
 dataframe, if not, return a \code{NULL}.
 }
+\note{
+For available methods, see-
+\url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
+}
 \section{Methods}{
 
 
@@ -39,6 +43,9 @@ broomExtra::augment(lmm.mod)
 lm.mod <- lm(Reaction ~ Days, sleepstudy)
 broomExtra::augment(lm.mod)
 }
+\seealso{
+\code{\link{grouped_augment}}, \code{\link{boot_augment}}
+}
 \author{
-Indrajeet Patil
+\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 }

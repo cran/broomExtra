@@ -8,7 +8,7 @@
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/broomExtra)](https://CRAN.R-project.org/package=broomExtra)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/broomExtra)](https://cran.r-project.org/web/checks/check_results_broomExtra.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.4-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/broomExtra/commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.5-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/broomExtra/commits/master)
 [![Daily downloads
 badge](https://cranlogs.r-pkg.org/badges/last-day/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)
 [![Weekly downloads
@@ -28,7 +28,7 @@ Status](https://coveralls.io/repos/github/IndrajeetPatil/broomExtra/badge.svg?br
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--06--24-yellowgreen.svg)](https://github.com/IndrajeetPatil/broomExtra/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--08--18-yellowgreen.svg)](https://github.com/IndrajeetPatil/broomExtra/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -40,14 +40,14 @@ data analysis workflows involving packages `broom` and `broom.mixed`.
 
 # Installation
 
-To get the latest, stable `CRAN` release (`0.0.4`):
+To get the latest, stable `CRAN` release (`0.0.5`):
 
 ``` r
 utils::install.packages(pkgs = "broomExtra")
 ```
 
 You can get the **development** version of the package from `GitHub`
-(`0.0.4.9000`). To see what new changes (and bug fixes) have been made
+(`0.0.5.9000`). To see what new changes (and bug fixes) have been made
 to the package since the last release on `CRAN`, you can check the
 detailed log of changes here:
 <https://indrajeetpatil.github.io/broomExtra/news/index.html>
@@ -101,20 +101,11 @@ models.
 ``` r
 set.seed(123)
 library(lme4)
-#> Loading required package: Matrix
 library(ordinal)
-#> 
-#> Attaching package: 'ordinal'
-#> The following objects are masked from 'package:lme4':
-#> 
-#>     ranef, VarCorr
 
 # mixed-effects models (`broom.mixed` will be used)
 lmm.mod <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 broomExtra::tidy(x = lmm.mod, effects = "fixed")
-#> Registered S3 method overwritten by 'broom.mixed':
-#>   method      from 
-#>   tidy.gamlss broom
 #> # A tibble: 2 x 5
 #>   effect term        estimate std.error statistic
 #>   <chr>  <chr>          <dbl>     <dbl>     <dbl>
@@ -151,12 +142,7 @@ broomExtra::tidy(
 #> 7 tempw~    1.43      0.924     0.389 6.97e- 1   0.234      8.76  location
 
 # unsupported object (the function will return `NULL` in such cases)
-x <- c(2, 2:4, 4, 4, 5, 5, 7, 7, 7)
-y <- c(1:6, 5:4, 3:1)
-appr <- stats::approx(x, y, xout = x)
-#> Warning in regularize.values(x, y, ties, missing(ties)): collapsing to
-#> unique 'x' values
-broomExtra::tidy(appr)
+broomExtra::tidy(list(1, c("x", "y")))
 #> NULL
 ```
 
@@ -297,19 +283,19 @@ broomExtra::grouped_tidy(
   na.action = na.omit,
   tidy.args = list(quick = TRUE)
 )
-#> # A tibble: 35 x 4
-#>    cut   color term  estimate
-#>    <ord> <ord> <chr>    <dbl>
-#>  1 Fair  D     carat    5246.
-#>  2 Fair  E     carat    4202.
-#>  3 Fair  F     carat    4877.
-#>  4 Fair  G     carat    4538.
-#>  5 Fair  H     carat    4620.
-#>  6 Fair  I     carat    3969.
-#>  7 Fair  J     carat    4024.
-#>  8 Good  D     carat    5207.
-#>  9 Good  E     carat    5102.
-#> 10 Good  F     carat    5151.
+#> # A tibble: 35 x 7
+#>    cut   color term  estimate std.error statistic   p.value
+#>    <ord> <ord> <chr>    <dbl>     <dbl>     <dbl>     <dbl>
+#>  1 Fair  D     carat    5246.     207.       25.3 4.45e- 41
+#>  2 Fair  E     carat    4202.     158.       26.6 3.52e- 47
+#>  3 Fair  F     carat    4877.     149.       32.7 1.68e- 71
+#>  4 Fair  G     carat    4538.     152.       29.8 1.03e- 66
+#>  5 Fair  H     carat    4620.     146.       31.6 7.68e- 66
+#>  6 Fair  I     carat    3969.     136.       29.2 4.86e- 44
+#>  7 Fair  J     carat    4024.     197.       20.4 4.80e- 27
+#>  8 Good  D     carat    5207.     115.       45.4 2.66e-145
+#>  9 Good  E     carat    5102.      91.9      55.5 2.50e-206
+#> 10 Good  F     carat    5151.      92.4      55.8 1.76e-204
 #> # ... with 25 more rows
 
 # linear mixed effects model (tidy analysis across grouping combinations)
@@ -421,7 +407,6 @@ broomExtra::grouped_augment(
   formula = price ~ carat + (carat | color) - 1,
   control = lme4::lmerControl(optimizer = "bobyqa")
 )
-#> boundary (singular) fit: see ?isSingular
 #> # A tibble: 26,970 x 15
 #>    cut   price carat color .fitted .resid    .hat .cooksd .fixed   .mu
 #>    <ord> <int> <dbl> <ord>   <dbl>  <dbl>   <dbl>   <dbl>  <dbl> <dbl>
@@ -472,19 +457,19 @@ library(broomExtra)
   ),
   tidy.args = list(effects = "fixed")
 ))
-#> # A tibble: 200 x 6
-#>    id           effect term        estimate std.error statistic
-#>    <chr>        <chr>  <chr>          <dbl>     <dbl>     <dbl>
-#>  1 Bootstrap001 fixed  (Intercept)   251.        7.59     33.1 
-#>  2 Bootstrap001 fixed  Days           10.2       1.68      6.04
-#>  3 Bootstrap002 fixed  (Intercept)   247.        8.93     27.7 
-#>  4 Bootstrap002 fixed  Days           12.6       2.46      5.11
-#>  5 Bootstrap003 fixed  (Intercept)   254.        7.89     32.2 
-#>  6 Bootstrap003 fixed  Days           10.3       1.72      6.00
-#>  7 Bootstrap004 fixed  (Intercept)   254.        5.78     44.0 
-#>  8 Bootstrap004 fixed  Days            9.47      1.48      6.41
-#>  9 Bootstrap005 fixed  (Intercept)   246.        7.12     34.5 
-#> 10 Bootstrap005 fixed  Days           11.4       1.66      6.88
+#> # A tibble: 200 x 7
+#>    splits         id          effect term      estimate std.error statistic
+#>    <list>         <chr>       <chr>  <chr>        <dbl>     <dbl>     <dbl>
+#>  1 <split [180/6~ Bootstrap0~ fixed  (Interce~   251.        7.59     33.1 
+#>  2 <split [180/6~ Bootstrap0~ fixed  Days         10.2       1.68      6.04
+#>  3 <split [180/6~ Bootstrap0~ fixed  (Interce~   247.        8.93     27.7 
+#>  4 <split [180/6~ Bootstrap0~ fixed  Days         12.6       2.46      5.11
+#>  5 <split [180/6~ Bootstrap0~ fixed  (Interce~   254.        7.89     32.2 
+#>  6 <split [180/6~ Bootstrap0~ fixed  Days         10.3       1.72      6.00
+#>  7 <split [180/6~ Bootstrap0~ fixed  (Interce~   254.        5.78     44.0 
+#>  8 <split [180/6~ Bootstrap0~ fixed  Days          9.47      1.48      6.41
+#>  9 <split [180/6~ Bootstrap0~ fixed  (Interce~   246.        7.12     34.5 
+#> 10 <split [180/6~ Bootstrap0~ fixed  Days         11.4       1.66      6.88
 #> # ... with 190 more rows
 
 # plotting estimates from each bootstrapped sample
@@ -498,12 +483,6 @@ dplyr::filter(df_boot, term != "(Intercept)") %>%
     x = "bootstrap sample",
     y = "regression estimate"
   )
-#> Registered S3 methods overwritten by 'car':
-#>   method                          from
-#>   influence.merMod                lme4
-#>   cooks.distance.influence.merMod lme4
-#>   dfbeta.influence.merMod         lme4
-#>   dfbetas.influence.merMod        lme4
 ```
 
 <img src="man/figures/README-boot_tidy-1.png" width="100%" />
@@ -576,34 +555,35 @@ library(ggplot2)
     augment.args = list(se_fit = TRUE)
   )
 )
-#> # A tibble: 16,000 x 11
-#>    id    .rownames   mpg    wt .fitted .se.fit  .resid .std.resid   .hat
-#>    <chr> <chr>     <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>  <dbl>
-#>  1 Boot~ Maserati~  15    3.57   18.0    0.579  2.96      -1.12   0.0458
-#>  2 Boot~ Cadillac~  10.4  5.25    7.71   1.35  -2.69       1.15   0.250 
-#>  3 Boot~ Honda Ci~  30.4  1.62   29.9    0.902 -0.522      0.205  0.111 
-#>  4 Boot~ Merc 450~  15.2  3.78   16.7    0.653  1.48      -0.563  0.0582
-#>  5 Boot~ Datsun 7~  22.8  2.32   25.6    0.605  2.78      -1.05   0.0500
-#>  6 Boot~ Merc 280   19.2  3.44   18.8    0.542 -0.449      0.170  0.0401
-#>  7 Boot~ Fiat 128   32.4  2.2    26.3    0.649 -6.09       2.32   0.0574
-#>  8 Boot~ Dodge Ch~  15.5  3.52   18.3    0.564  2.76      -1.04   0.0435
-#>  9 Boot~ Merc 280C  17.8  3.44   18.8    0.542  0.951     -0.359  0.0401
-#> 10 Boot~ Hornet S~  18.7  3.44   18.8    0.542  0.0506    -0.0191 0.0401
-#> # ... with 15,990 more rows, and 2 more variables: .sigma <dbl>,
-#> #   .cooksd <dbl>
+#> # A tibble: 16,000 x 12
+#>    splits id    .rownames   mpg    wt .fitted .se.fit  .resid .std.resid
+#>    <list> <chr> <chr>     <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>
+#>  1 <spli~ Boot~ Maserati~  15    3.57   18.0    0.579  2.96      -1.12  
+#>  2 <spli~ Boot~ Cadillac~  10.4  5.25    7.71   1.35  -2.69       1.15  
+#>  3 <spli~ Boot~ Honda Ci~  30.4  1.62   29.9    0.902 -0.522      0.205 
+#>  4 <spli~ Boot~ Merc 450~  15.2  3.78   16.7    0.653  1.48      -0.563 
+#>  5 <spli~ Boot~ Datsun 7~  22.8  2.32   25.6    0.605  2.78      -1.05  
+#>  6 <spli~ Boot~ Merc 280   19.2  3.44   18.8    0.542 -0.449      0.170 
+#>  7 <spli~ Boot~ Fiat 128   32.4  2.2    26.3    0.649 -6.09       2.32  
+#>  8 <spli~ Boot~ Dodge Ch~  15.5  3.52   18.3    0.564  2.76      -1.04  
+#>  9 <spli~ Boot~ Merc 280C  17.8  3.44   18.8    0.542  0.951     -0.359 
+#> 10 <spli~ Boot~ Hornet S~  18.7  3.44   18.8    0.542  0.0506    -0.0191
+#> # ... with 15,990 more rows, and 3 more variables: .hat <dbl>,
+#> #   .sigma <dbl>, .cooksd <dbl>
 
 # plotting those estimates
 dplyr::group_by(.data = df_augment, id) %>%
   dplyr::summarise(.data = ., mean.resid = mean(.resid)) %>%
-  dplyr::ungroup(x = .) %>% 
+  dplyr::ungroup(x = .) %>%
   tibble::rowid_to_column(.data = .) %>% # creating a plot
   ggplot(data = ., aes(rowid, mean.resid)) +
-  geom_point(size = 3, alpha = 0.5, color = "blue") + 
+  geom_point(size = 3, alpha = 0.5, color = "blue") +
   geom_line(color = "black") +
   geom_hline(aes(yintercept = 0),
-             color = "red",
-             size = 1,
-             linetype = "dashed") +
+    color = "red",
+    size = 1,
+    linetype = "dashed"
+  ) +
   ggstatsplot::theme_ggstatsplot() +
   labs(
     title = "mean difference between fitted and observed values from bootstrap samples",

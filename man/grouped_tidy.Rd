@@ -27,6 +27,10 @@ A \code{\link[tibble:tibble]{tibble::tibble()}} with information about model com
 Tidy output from grouped analysis of any function that has \code{data}
 argument in its function call.
 }
+\note{
+For available methods, see-
+\url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
+}
 \section{Methods}{
 
 
@@ -58,6 +62,9 @@ broomExtra::grouped_tidy(
   tidy.args = list(conf.int = TRUE, conf.level = 0.99)
 )
 }
+\seealso{
+\code{\link{tidy}}, \code{\link{boot_tidy}}
+}
 \author{
-Indrajeet Patil
+\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 }

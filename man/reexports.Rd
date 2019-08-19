@@ -5,6 +5,10 @@
 \alias{reexports}
 \alias{\%>\%}
 \alias{\%<>\%}
+\alias{\%$\%}
+\alias{tibble}
+\alias{\%||\%}
+\alias{\%|\%}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -12,6 +16,10 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}}
+  \item{dplyr}{\code{\link[dplyr]{tibble}}}
+
+  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}}
+
+  \item{rlang}{\code{\link[rlang]{\%||\%}}, \code{\link[rlang]{\%|\%}}}
 }}
 

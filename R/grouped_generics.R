@@ -1,7 +1,7 @@
 #' @title Tidy output from grouped analysis of any function that has `data`
 #'   argument in its function call.
 #' @name grouped_tidy
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @param data Dataframe (or tibble) from which variables are to be taken.
 #' @param grouping.vars Grouping variables.
@@ -9,11 +9,16 @@
 #' @inheritParams rlang::exec
 #' @param tidy.args A list of arguments to be used in the relevant `S3` method.
 #'
+#' @note For available methods, see-
+#' \url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
+#'
 #' @importFrom rlang !! !!! exec quo_squash enquo
 #' @importFrom dplyr group_by ungroup mutate group_map
 #'
 #' @inherit tidy return value
 #' @inheritSection tidy Methods
+#'
+#' @seealso \code{\link{tidy}}, \code{\link{boot_tidy}}
 #'
 #' @examples
 #' set.seed(123)
@@ -47,8 +52,7 @@ grouped_tidy <- function(data,
                          ...,
                          tidy.args = list()) {
   # check how many variables were entered for grouping variable vector
-  grouping.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
+  grouping.vars <- as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
   grouping.vars <-
     if (length(grouping.vars) == 1) {
       grouping.vars
@@ -80,7 +84,10 @@ grouped_tidy <- function(data,
 #' @title Model summary output from grouped analysis of any function that has
 #'   `data` argument in its function call.
 #' @name grouped_glance
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @note For available methods, see-
+#' \url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
 #'
 #' @inheritParams grouped_tidy
 #'
@@ -89,6 +96,8 @@ grouped_tidy <- function(data,
 #'
 #' @inherit glance return value
 #' @inheritSection glance Methods
+#'
+#' @seealso \code{\link{glance}}, \code{\link{boot_glance}}
 #'
 #' @examples
 #' set.seed(123)
@@ -119,8 +128,7 @@ grouped_glance <- function(data,
                            ..f,
                            ...) {
   # check how many variables were entered for grouping variable vector
-  grouping.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
+  grouping.vars <- as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
   grouping.vars <-
     if (length(grouping.vars) == 1) {
       grouping.vars
@@ -152,7 +160,10 @@ grouped_glance <- function(data,
 #' @title Augmented data from grouped analysis of any function that has `data`
 #'   argument in its function call.
 #' @name grouped_augment
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @note For available methods, see-
+#' \url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
 #'
 #' @inheritParams grouped_tidy
 #' @param augment.args A list of arguments to be used in the relevant `S3` method.
@@ -162,6 +173,8 @@ grouped_glance <- function(data,
 #'
 #' @inherit augment return value
 #' @inheritSection augment Methods
+#'
+#' @seealso \code{\link{augment}}, \code{\link{boot_augment}}
 #'
 #' @examples
 #' set.seed(123)
@@ -194,8 +207,7 @@ grouped_augment <- function(data,
                             ...,
                             augment.args = list()) {
   # check how many variables were entered for grouping variable vector
-  grouping.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
+  grouping.vars <- as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
   grouping.vars <-
     if (length(grouping.vars) == 1) {
       grouping.vars

@@ -1,6 +1,9 @@
 #' @title Bootstrapped dataframe with estimates from each sample.
 #' @name boot_tidy
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @note For available methods, see-
+#' \url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
 #'
 #' @inheritParams grouped_tidy
 #' @inheritParams rsample::bootstraps
@@ -8,10 +11,9 @@
 #' @inherit tidy return value
 #' @inheritSection tidy Methods
 #'
+#' @seealso \code{\link{grouped_tidy}}, \code{\link{tidy}}
+#'
 #' @importFrom rlang !! !!! exec
-#' @importFrom dplyr mutate
-#' @importFrom purrr map
-#' @importFrom tidyr unnest
 #' @importFrom rsample bootstraps
 #'
 #' @examples
@@ -67,24 +69,16 @@ boot_tidy <- function(data,
     rlang::exec(.fn = broomExtra::tidy, model, !!!tidy.args)
   }
 
-  # execute function for each bootstrapped sample and tidy output
-  boots_fits <- boots %>%
-    dplyr::mutate(
-      .data = .,
-      tidy_df = purrr::map(
-        .x = splits,
-        .f = tidy_group
-      )
-    ) %>%
-    tidyr::unnest(data = ., tidy_df)
-
   # return the final dataframe
-  return(boots_fits)
+  return(boot_unnest(boots, tidy_group))
 }
 
 #' @title Bootstrapped dataframe with model summaries from each sample.
 #' @name boot_glance
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @note For available methods, see-
+#' \url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
 #'
 #' @inheritParams grouped_glance
 #' @inheritParams rsample::bootstraps
@@ -92,10 +86,9 @@ boot_tidy <- function(data,
 #' @inherit glance return value
 #' @inheritSection glance Methods
 #'
+#' @seealso \code{\link{grouped_glance}}, \code{\link{glance}}
+#'
 #' @importFrom rlang !! !!! exec
-#' @importFrom dplyr mutate
-#' @importFrom purrr map
-#' @importFrom tidyr unnest
 #' @importFrom rsample bootstraps
 #'
 #' @examples
@@ -148,24 +141,16 @@ boot_glance <- function(data,
     rlang::exec(.fn = broomExtra::glance, model)
   }
 
-  # execute function for each bootstrapped sample and tidy output
-  boots_fits <- boots %>%
-    dplyr::mutate(
-      .data = .,
-      glance_df = purrr::map(
-        .x = splits,
-        .f = glance_group
-      )
-    ) %>%
-    tidyr::unnest(data = ., glance_df)
-
   # return the final dataframe
-  return(boots_fits)
+  return(boot_unnest(boots, glance_group))
 }
 
 #' @title Bootstrapped dataframe with augmented predictions from each sample.
 #' @name boot_augment
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @note For available methods, see-
+#' \url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
 #'
 #' @inheritParams grouped_augment
 #' @inheritParams rsample::bootstraps
@@ -173,10 +158,9 @@ boot_glance <- function(data,
 #' @inherit augment return value
 #' @inheritSection augment Methods
 #'
+#' @seealso \code{\link{grouped_augment}}, \code{\link{augment}}
+#'
 #' @importFrom rlang !! !!! exec
-#' @importFrom dplyr mutate
-#' @importFrom purrr map
-#' @importFrom tidyr unnest
 #' @importFrom rsample bootstraps
 #'
 #' @examples
@@ -230,17 +214,26 @@ boot_augment <- function(data,
     rlang::exec(.fn = broomExtra::augment, model, !!!augment.args)
   }
 
-  # execute function for each bootstrapped sample and tidy output
-  boots_fits <- boots %>%
-    dplyr::mutate(
-      .data = .,
-      augment_df = purrr::map(
-        .x = splits,
-        .f = augment_group
-      )
-    ) %>%
-    tidyr::unnest(data = ., augment_df)
-
   # return the final dataframe
-  return(boots_fits)
+  return(boot_unnest(boots, augment_group))
+}
+
+#' @name boot_unnest
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
+#'
+#' @inheritParams rsample::int_pctl
+#' @param .fn A function to execute on a dataframe containing bootstrap
+#'   resamples.
+#'
+#' @importFrom dplyr mutate
+#' @importFrom purrr map
+#' @importFrom tidyr unnest
+#'
+#' @noRd
+#' @keywords internal
+
+boot_unnest <- function(.data, .fn) {
+  .data %>%
+    dplyr::mutate(.data = ., results = purrr::map(.x = splits, .f = .fn)) %>%
+    tidyr::unnest(., results)
 }

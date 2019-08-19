@@ -27,6 +27,10 @@ A \code{\link[tibble:tibble]{tibble::tibble()}} with information about data poin
 Augmented data from grouped analysis of any function that has \code{data}
 argument in its function call.
 }
+\note{
+For available methods, see-
+\url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
+}
 \section{Methods}{
 
 
@@ -57,6 +61,9 @@ broomExtra::grouped_augment(
   control = lme4::lmerControl(optimizer = "bobyqa")
 )
 }
+\seealso{
+\code{\link{augment}}, \code{\link{boot_augment}}
+}
 \author{
-Indrajeet Patil
+\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 }

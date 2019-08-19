@@ -1,17 +1,25 @@
 #' @title Retrieve tidy dataframe if it exists.
 #' @name tidy
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #' @description Checks if a `tidy` method exits for a given object, either in
 #'   `broom` or in `broom.mixed`. If it does, it turn an object into a tidy
-#'   tibble, if not, return a `NULL`.
+#'   tibble, if not, return a `NULL`. In case of data frames, a tibble data
+#'   frame is returned.
+#'
+#' @note For available methods, see-
+#' \url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
 #'
 #' @inheritParams generics::tidy
 #'
+#' @importFrom rlang is_null
 #' @importFrom broom tidy
 #' @importFrom broom.mixed tidy
+#' @importFrom dplyr as_tibble
 #'
 #' @inherit generics::tidy return value
 #' @inheritSection generics::tidy Methods
+#'
+#' @seealso \code{\link{grouped_tidy}}, \code{\link{boot_tidy}}
 #'
 #' @examples
 #' set.seed(123)
@@ -24,6 +32,9 @@
 #' # linear model (`broom` will be used)
 #' lm.mod <- lm(Reaction ~ Days, sleepstudy)
 #' broomExtra::tidy(x = lm.mod, conf.int = TRUE)
+#'
+#' # unsupported object (the function will return `NULL` in such cases)
+#' broomExtra::tidy(list(1, c("x", "y")))
 #' @export
 
 tidy <- function(x, ...) {
@@ -31,18 +42,22 @@ tidy <- function(x, ...) {
   # check if `broom` has a tidy method for a given object
   f <- tryCatch(
     expr = broom::tidy(x, ...),
-    error = function(e) {
-      NULL
-    }
+    error = function(e) NULL
   )
 
   # if not, check if `broom.mixed` has a tidy method for a given object
-  if (is.null(f)) {
+  if (rlang::is_null(f)) {
     f <- tryCatch(
       expr = broom.mixed::tidy(x, ...),
-      error = function(e) {
-        NULL
-      }
+      error = function(e) NULL
+    )
+  }
+
+  # if not, try to convert it to a tibble (relevant for dataframe)
+  if (rlang::is_null(f)) {
+    f <- tryCatch(
+      expr = dplyr::as_tibble(x, ..., rownames = "rownames"),
+      error = function(e) NULL
     )
   }
 
@@ -53,10 +68,13 @@ tidy <- function(x, ...) {
 
 #' @title Retrieve model summary dataframe if it exists.
 #' @name glance
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #' @description Check if a `glance` method exits for a given object, either in
 #'   `broom` or in `broom.mixed`. If it does, return the model summary
 #'   dataframe, if not, return a `NULL`.
+#'
+#' @note For available methods, see-
+#' \url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
 #'
 #' @inheritParams generics::glance
 #'
@@ -65,6 +83,8 @@ tidy <- function(x, ...) {
 #'
 #' @inherit generics::glance return value
 #' @inheritSection generics::glance Methods
+#'
+#' @seealso \code{\link{grouped_glance}}, \code{\link{boot_glance}}
 #'
 #' @examples
 #' set.seed(123)
@@ -84,18 +104,14 @@ glance <- function(x, ...) {
   # check if `broom` has a glance method for a given object
   f <- tryCatch(
     expr = broom::glance(x, ...),
-    error = function(e) {
-      NULL
-    }
+    error = function(e) NULL
   )
 
   # if not, check if `broom.mixed` has a glance method for a given object
-  if (is.null(f)) {
+  if (rlang::is_null(f)) {
     f <- tryCatch(
       expr = broom.mixed::glance(x, ...),
-      error = function(e) {
-        NULL
-      }
+      error = function(e) NULL
     )
   }
 
@@ -105,10 +121,13 @@ glance <- function(x, ...) {
 
 #' @title Retrieve augmented dataframe if it exists.
 #' @name augment
-#' @author Indrajeet Patil
+#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #' @description Check if a `augment` method exits for a given object, either in
 #'   `broom` or in `broom.mixed`. If it does, return the model summary
 #'   dataframe, if not, return a `NULL`.
+#'
+#' @note For available methods, see-
+#' \url{https://indrajeetpatil.github.io/broomExtra/articles/available_methods.html}
 #'
 #' @inheritParams generics::augment
 #'
@@ -117,6 +136,8 @@ glance <- function(x, ...) {
 #'
 #' @inherit generics::augment return value
 #' @inheritSection generics::augment Methods
+#'
+#' @seealso \code{\link{grouped_augment}}, \code{\link{boot_augment}}
 #'
 #' @examples
 #' set.seed(123)
@@ -136,18 +157,14 @@ augment <- function(x, ...) {
   # check if `broom` has a augment method for a given object
   f <- tryCatch(
     expr = broom::augment(x, ...),
-    error = function(e) {
-      NULL
-    }
+    error = function(e) NULL
   )
 
   # if not, check if `broom.mixed` has a augment method for a given object
-  if (is.null(f)) {
+  if (rlang::is_null(f)) {
     f <- tryCatch(
       expr = broom.mixed::augment(x, ...),
-      error = function(e) {
-        NULL
-      }
+      error = function(e) NULL
     )
   }
 
