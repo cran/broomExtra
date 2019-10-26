@@ -1,3 +1,7 @@
+# broomExtra 0.0.6
+ 
+  - Maintenance release to make package compatible with `dplyr 0.8.4`.
+
 # broomExtra 0.0.5
 
   - In addition to trying to extract results using tidiers from `broom` and
