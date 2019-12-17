@@ -14,9 +14,7 @@ grouped_tidy(data, grouping.vars, ..f, ..., tidy.args = list())
 
 \item{..f}{A function, or function name as a string.}
 
-\item{...}{Arguments to function.
-
-These dots support \link[rlang]{tidy-dots} features.}
+\item{...}{<\link[rlang:dyn-dots]{dynamic}> Arguments for \code{.fn}.}
 
 \item{tidy.args}{A list of arguments to be used in the relevant \code{S3} method.}
 }
@@ -63,7 +61,7 @@ broomExtra::grouped_tidy(
 )
 }
 \seealso{
-\code{\link{tidy}}, \code{\link{boot_tidy}}
+\code{\link{tidy}}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

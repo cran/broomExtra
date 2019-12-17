@@ -14,9 +14,7 @@ grouped_glance(data, grouping.vars, ..f, ...)
 
 \item{..f}{A function, or function name as a string.}
 
-\item{...}{Arguments to function.
-
-These dots support \link[rlang]{tidy-dots} features.}
+\item{...}{<\link[rlang:dyn-dots]{dynamic}> Arguments for \code{.fn}.}
 }
 \description{
 Model summary output from grouped analysis of any function that has
@@ -56,7 +54,7 @@ broomExtra::grouped_glance(
 )
 }
 \seealso{
-\code{\link{glance}}, \code{\link{boot_glance}}
+\code{\link{glance}}
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}

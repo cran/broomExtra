@@ -1,13 +1,13 @@
-## ---- include = FALSE----------------------------------------------------
+## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ----setup---------------------------------------------------------------
+## ----setup--------------------------------------------------------------------
 library(broomExtra)
 
-## ----list, echo = FALSE, message = FALSE---------------------------------
+## ----list, echo = FALSE, message = FALSE--------------------------------------
 # loading the needed libraries
 library(dplyr)
 library(broom)
