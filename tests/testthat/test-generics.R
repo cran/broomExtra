@@ -17,23 +17,6 @@ testthat::test_that(
     # broom
     lm.mod <- lm(Reaction ~ Days, sleepstudy)
     testthat::expect_equal(broomExtra::tidy(lm.mod), broom::tidy(lm.mod))
-
-    # unsupported
-    x <- c(2, 2:4, 4, 4, 5, 5, 7, 7, 7)
-    y <- c(1:6, 5:4, 3:1)
-    suppressWarnings(appr <- stats::approx(x, y, xout = x))
-    suppressWarnings(testthat::expect_is(broomExtra::tidy(appr), "tbl_df"))
-
-    # dataframes
-    suppressWarnings(
-      testthat::expect_is(
-        broomExtra::tidy(dplyr::group_by(iris, Species)),
-        "tbl_df"
-      )
-    )
-    # testthat::expect_equal(dim(broomExtra::tidy(mtcars)), c(32L, 12L))
-    # testthat::expect_identical(names(broomExtra::tidy(mtcars))[1], "rownames")
-    testthat::expect_null(broomExtra::tidy(list(1, c("x", "y"))), NULL)
   }
 )
 

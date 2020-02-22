@@ -14,7 +14,6 @@
 #' @importFrom rlang is_null
 #' @importFrom broom tidy
 #' @importFrom broom.mixed tidy
-#' @importFrom dplyr as_tibble
 #'
 #' @inherit generics::tidy return value
 #' @inheritSection generics::tidy Methods
@@ -49,14 +48,6 @@ tidy <- function(x, ...) {
   if (rlang::is_null(f)) {
     f <- tryCatch(
       expr = broom.mixed::tidy(x, ...),
-      error = function(e) NULL
-    )
-  }
-
-  # if not, try to convert it to a tibble (relevant for dataframe)
-  if (rlang::is_null(f)) {
-    f <- tryCatch(
-      expr = dplyr::as_tibble(x, ..., rownames = "rownames"),
       error = function(e) NULL
     )
   }
