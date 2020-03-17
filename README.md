@@ -1,26 +1,55 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `broomExtra`: Enhancements for `broom` Package Family
+# `broomExtra`: Enhancements for `broom` and `easystats` Package Families
 
 | Package                                                                                                                                                       | Status                                                                                                                                                                                     | Usage                                                                                                                                           | GitHub                                                                                                                                                       | References                                                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/broomExtra)](https://CRAN.R-project.org/package=broomExtra)                                  | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/broomExtra.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/broomExtra)                                               | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)     | [![GitHub version](https://img.shields.io/badge/GitHub-2.0.0.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/broomExtra/)              | [![Website](https://img.shields.io/badge/website-broomExtra-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/broomExtra/)                           |
-| [![CRAN Checks](https://cranchecks.info/badges/summary/broomExtra)](https://cran.r-project.org/web/checks/check_results_broomExtra.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/broomExtra?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/broomExtra) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)   | [![Forks](https://img.shields.io/badge/forks-2-blue.svg)](https://github.com/IndrajeetPatil/broomExtra/)                                                     | [![Rdoc](https://www.rdocumentation.org/badges/version/broomExtra)](https://www.rdocumentation.org/packages/broomExtra)                                        |
+| [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/broomExtra)](https://CRAN.R-project.org/package=broomExtra)                                  | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/broomExtra.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/broomExtra)                                               | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)     | [![GitHub version](https://img.shields.io/badge/GitHub-2.5.0.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/broomExtra/)              | [![Website](https://img.shields.io/badge/website-broomExtra-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/broomExtra/)                           |
+| [![CRAN Checks](https://cranchecks.info/badges/summary/broomExtra)](https://cran.r-project.org/web/checks/check_results_broomExtra.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/broomExtra?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/broomExtra) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)   | [![Forks](https://img.shields.io/badge/forks-3-blue.svg)](https://github.com/IndrajeetPatil/broomExtra/)                                                     | [![Rdoc](https://www.rdocumentation.org/badges/version/broomExtra)](https://www.rdocumentation.org/packages/broomExtra)                                        |
 | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)                                                    | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                             | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra) | [![Github Issues](https://img.shields.io/badge/issues-0-red.svg)](https://github.com/IndrajeetPatil/broomExtra/issues)                                       | [![vignettes](https://img.shields.io/badge/vignettes-2.0.0-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=broomExtra/vignettes/)                |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/broomExtra.svg)](https://github.com/IndrajeetPatil/broomExtra) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/broomExtra/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/broomExtra?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/broomExtra?color=blue)](https://CRAN.R-project.org/package=broomExtra)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/broomExtra.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/broomExtra) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3597451.svg)](https://doi.org/10.5281/zenodo.3597451)                                                      |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                              | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/broomExtra/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/broomExtra?branch=master)                   | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/broomExtra.svg)](http://hits.dwyl.io/IndrajeetPatil/broomExtra)                                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--02--22-yellowgreen.svg)](https://github.com/IndrajeetPatil/broomExtra/commits/master)   | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/broomExtra.svg)](https://github.com/IndrajeetPatil/broomExtra/commits/master)  |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                              | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/broomExtra/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/broomExtra?branch=master)                   | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/broomExtra.svg)](http://hits.dwyl.io/IndrajeetPatil/broomExtra)                                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--17-yellowgreen.svg)](https://github.com/IndrajeetPatil/broomExtra/commits/master)   | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/broomExtra.svg)](https://github.com/IndrajeetPatil/broomExtra/commits/master)  |
 | [![status](https://tinyverse.netlify.com/badge/broomExtra)](https://CRAN.R-project.org/package=broomExtra)                                                    | [![R build status](https://github.com/IndrajeetPatil/broomExtra/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/broomExtra)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/broomExtra/community)                                          | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                   | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/broomExtra/issues) |
 
+# Raison d’être <img src="man/figures/logo.png" align="right" width="360" />
+
 The goal of `broomExtra` is to provide helper functions that assist in
-data analysis workflows involving packages `broom` and `broom.mixed`.
+data analysis workflows involving regression analyses. The goal is to
+combine the functionality offered by different set of packages through a
+common syntax to return tidy tibbles containing model parameters and
+summaries.
+
+The package internally relies on the following packages that I
+contribute to:
+
+  - `broom`
+  - `broom.mixed`
+  - `parameters`
+  - `performance`
+
+Since it combines functionality from these two ecosystems, this package
+has the following advantages over the underlying individual packages
+(see examples below for concrete instantiations of these benefits):
+
+  - Covers more number of regression models than these individual
+    packages.
+  - If possible to compute, the output tibbles contains a *p*-value
+    column.
+  - More robust to extraneous input arguments that might sometimes cause
+    problems for the underlying methods.
+  - Follows consistent `tidymodels` column-naming schema.
+  - Returns a more comprehensive model performance measure summary.
+
+If you want to add support for a regression model, the natural place to
+do this would be to contribute either to `broom` or to `parameters`.
 
 # Installation
 
 To get the latest, stable `CRAN` release:
 
 ``` r
-utils::install.packages(pkgs = "broomExtra")
+install.packages("broomExtra")
 ```
 
 You can get the **development** version of the package from `GitHub`. To
@@ -32,7 +61,7 @@ If you are in hurry and want to reduce the time of installation, prefer-
 
 ``` r
 # needed package to download from GitHub repo
-utils::install.packages(pkgs = "remotes")
+install.packages("remotes")
 remotes::install_github(
   repo = "IndrajeetPatil/broomExtra", # package path on GitHub
   quick = TRUE # skips docs, demos, and vignettes
@@ -55,6 +84,297 @@ Otherwise, the quicker option is-
 remotes::install_github("IndrajeetPatil/broomExtra")
 ```
 
+# hybrid generics
+
+The `broom`-family of packages are not the only ones which return such
+tidy summaries for model parameters and model performance. The
+`easystats`-family of packages also provide similar functions, more
+specifically [parameters](https://easystats.github.io/parameters/) and
+[performance](https://easystats.github.io/performance/). Sometimes the
+`broom` packages might not contain a `tidy`/`glance` method for a given
+regression object, while `easystats` packages would and *vice versa*.
+
+The hybrid functions in `broomExtra` make it easy to retrieve these
+summaries with the appropriate method and do so robustly:
+
+  - `broom::tidy` + `parameters::model_parameters` =
+    `broomExtra::tidy_parameters`
+
+  - `broom::glance` + `performance::model_performance` =
+    `broomExtra::glance_performance`
+
+## Benefits of using `tidy_parameters`
+
+<font color="green"> The `tidy_parameters` will return a model summary
+either from `broomExtra::tidy` or `parameters::model_parameters`.
+</font>
+
+Sometimes the method will not be available in `broom`, while it will be
+in `parameters`:
+
+``` r
+# mixor object
+set.seed(123)
+library("mixor")
+data("SmokingPrevention")
+
+# data frame must be sorted by id variable
+SmokingPrevention <- SmokingPrevention[order(SmokingPrevention$class), ]
+
+# school model
+mod_mixor <-
+  mixor(
+    formula = thksord ~ thkspre + cc + tv + cctv,
+    data = SmokingPrevention,
+    id = school, link = "logit"
+  )
+
+# tidier in `broom`-family?
+broomExtra::tidy(mod_mixor)
+#> NULL
+
+# using hybrid function
+broomExtra::tidy_parameters(mod_mixor)
+#> # A tibble: 8 x 8
+#>   term               estimate std.error conf.low conf.high statistic p.value
+#>   <chr>                 <dbl>     <dbl>    <dbl>     <dbl>     <dbl>   <dbl>
+#> 1 (Intercept)          0.0882    0.313   -0.526      0.702     0.282  0.778 
+#> 2 Threshold2           1.24      0.0883   1.07       1.41     14.1    0     
+#> 3 Threshold3           2.42      0.0836   2.26       2.58     28.9    0     
+#> 4 thkspre              0.403     0.0429   0.319      0.487     9.39   0     
+#> 5 cc                   0.924     0.371    0.196      1.65      2.49   0.0128
+#> 6 tv                   0.275     0.315   -0.342      0.893     0.873  0.383 
+#> 7 cctv                -0.466     0.406   -1.26       0.330    -1.15   0.251 
+#> 8 Random.(Intercept)   0.0735    0.0495  -0.0235     0.170     1.49   0.137 
+#>   effects
+#>   <chr>  
+#> 1 fixed  
+#> 2 fixed  
+#> 3 fixed  
+#> 4 fixed  
+#> 5 fixed  
+#> 6 fixed  
+#> 7 fixed  
+#> 8 random
+```
+
+While other times, it will be the other way around:
+
+``` r
+# model
+library(orcutt)
+set.seed(123)
+reg <- stats::lm(formula = mpg ~ wt + qsec + disp, data = mtcars)
+co <- orcutt::cochrane.orcutt(reg)
+
+# no tidier available in `parameters`
+parameters::model_parameters(co)
+#> Error in `[.data.frame`(md, , needed.vars, drop = FALSE): undefined columns selected
+
+# `tidy_parameters` still won't fail
+broomExtra::tidy_parameters(co)
+#> # A tibble: 4 x 5
+#>   term        estimate std.error statistic p.value
+#>   <chr>          <dbl>     <dbl>     <dbl>   <dbl>
+#> 1 (Intercept) 21.8        6.63       3.29  0.00279
+#> 2 wt          -4.85       1.33      -3.65  0.00112
+#> 3 qsec         0.797      0.370      2.15  0.0402 
+#> 4 disp        -0.00136    0.0110    -0.123 0.903
+```
+
+<font color="green"> These functions are robust such that they won’t
+fail if the `...` contains misspecified arguments. </font>
+
+This makes these functions much easier to work with while writing
+wrapper functions around `broomExtra::tidy` or
+`parameters::model_parameters`.
+
+``` r
+# setup
+set.seed(123)
+library(lavaan)
+
+# model specs
+HS.model <- " visual  =~ x1 + x2 + x3
+              textual =~ x4 + x5 + x6
+              speed   =~ x7 + x8 + x9 "
+
+# model
+mod_lavaan <-
+  lavaan(
+    HS.model,
+    data = HolzingerSwineford1939,
+    auto.var = TRUE,
+    auto.fix.first = TRUE,
+    auto.cov.lv.x = TRUE
+  )
+
+# tidy method with additional arguments
+broom::tidy(mod_lavaan, exponentiate = TRUE)
+#> Error in lavaan::parameterEstimates(x, ci = conf.int, level = conf.level, : unused argument (exponentiate = TRUE)
+
+# parameters method with additional arguments
+parameters::model_parameters(mod_lavaan, exponentiate = TRUE)
+#> Error in lavaan::parameterEstimates(model, se = TRUE, level = ci, ...): unused argument (exponentiate = TRUE)
+
+# using hybrid function
+broomExtra::tidy_parameters(mod_lavaan, exponentiate = TRUE)
+#> # A tibble: 24 x 11
+#>    term          op    estimate std.error statistic   p.value conf.low conf.high
+#>    <chr>         <chr>    <dbl>     <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#>  1 visual =~ x1  =~       1        0          NA    NA           1         1    
+#>  2 visual =~ x2  =~       0.554    0.0997      5.55  2.80e- 8    0.358     0.749
+#>  3 visual =~ x3  =~       0.729    0.109       6.68  2.31e-11    0.516     0.943
+#>  4 textual =~ x4 =~       1        0          NA    NA           1         1    
+#>  5 textual =~ x5 =~       1.11     0.0654     17.0   0.          0.985     1.24 
+#>  6 textual =~ x6 =~       0.926    0.0554     16.7   0.          0.817     1.03 
+#>  7 speed =~ x7   =~       1        0          NA    NA           1         1    
+#>  8 speed =~ x8   =~       1.18     0.165       7.15  8.56e-13    0.857     1.50 
+#>  9 speed =~ x9   =~       1.08     0.151       7.15  8.40e-13    0.785     1.38 
+#> 10 x1 ~~ x1      ~~       0.549    0.114       4.83  1.34e- 6    0.326     0.772
+#>    std.lv std.all std.nox
+#>     <dbl>   <dbl>   <dbl>
+#>  1  0.900   0.772   0.772
+#>  2  0.498   0.424   0.424
+#>  3  0.656   0.581   0.581
+#>  4  0.990   0.852   0.852
+#>  5  1.10    0.855   0.855
+#>  6  0.917   0.838   0.838
+#>  7  0.619   0.570   0.570
+#>  8  0.731   0.723   0.723
+#>  9  0.670   0.665   0.665
+#> 10  0.549   0.404   0.404
+#> # ... with 14 more rows
+```
+
+<font color="green"> Additionally, the *p*-values and confidence
+intervals for regression estimates are consistently included. </font>
+
+``` r
+# setup
+set.seed(123)
+library(MASS)
+mod <- rlm(stack.loss ~ ., stackloss)
+
+# broom output (no p-values present)
+broomExtra::tidy(mod, conf.int = TRUE)
+#> # A tibble: 4 x 6
+#>   term        estimate std.error statistic conf.low conf.high
+#>   <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#> 1 (Intercept)  -41.0       9.81     -4.18   -60.2     -21.8  
+#> 2 Air.Flow       0.829     0.111     7.46     0.611     1.05 
+#> 3 Water.Temp     0.926     0.303     3.05     0.331     1.52 
+#> 4 Acid.Conc.    -0.128     0.129    -0.992   -0.380     0.125
+
+# using `tidy_parameters` (p-values present)
+broomExtra::tidy_parameters(mod)
+#> # A tibble: 4 x 7
+#>   term        estimate std.error statistic conf.low conf.high     p.value
+#>   <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>       <dbl>
+#> 1 (Intercept)  -41.0       9.81     -4.18   -60.2     -21.8   0.000624   
+#> 2 Air.Flow       0.829     0.111     7.46     0.611     1.05  0.000000933
+#> 3 Water.Temp     0.926     0.303     3.05     0.331     1.52  0.00720    
+#> 4 Acid.Conc.    -0.128     0.129    -0.992   -0.380     0.125 0.335
+```
+
+## Benefits of using `glance_performance`
+
+<font color="green"> The `glance_performance` will return a model
+summary either from `broom::glance` or `performance::model_performance`.
+</font>
+
+``` r
+# mixor object
+set.seed(123)
+library("mixor")
+data("SmokingPrevention")
+
+# data frame must be sorted by id variable
+SmokingPrevention <- SmokingPrevention[order(SmokingPrevention$class), ]
+
+# school model
+mod_mixor <-
+  mixor(
+    formula = thksord ~ thkspre + cc + tv + cctv,
+    data = SmokingPrevention,
+    id = school, link = "logit"
+  )
+
+# glance method in `broom`-family?
+broomExtra::glance(mod_mixor)
+#> NULL
+
+# using hybrid function
+broomExtra::glance_performance(mod_mixor)
+#> # A tibble: 1 x 2
+#>      aic    bic
+#>    <dbl>  <dbl>
+#> 1 -2128. -2133.
+```
+
+Sometimes the method will be available in `broom`, but not in
+`easystats`, but `glance_performance` will manage to choose the
+appropriate method for you. For example-
+
+``` r
+# model
+library(orcutt)
+set.seed(123)
+reg <- stats::lm(formula = mpg ~ wt + qsec + disp, data = mtcars)
+co <- orcutt::cochrane.orcutt(reg)
+
+# no method available in `performance`
+performance::model_performance(co)
+#> Error in UseMethod("model_performance"): no applicable method for 'model_performance' applied to an object of class "orcutt"
+
+# `glance_performance` doesn't fail
+broomExtra::glance_performance(co)
+#> # A tibble: 1 x 9
+#>   r.squared adj.r.squared   rho number.interaction dw.original p.value.original
+#>       <dbl>         <dbl> <dbl>              <dbl>       <dbl>            <dbl>
+#> 1     0.799         0.777 0.268                  7        1.50           0.0406
+#>   dw.transformed p.value.transformed  nobs
+#>            <dbl>               <dbl> <int>
+#> 1           2.06               0.521    32
+```
+
+<font color="green"> Additionally, it will return model summary that
+contains combined metrics from these two packages. </font>
+
+For example, some unique performance measures are present only in the
+`performance` package contains (e.g., Nagelkerke’s *R*-squared, Tjur’s
+*R*-squared, etc.), but not `broom` package and *vice versa*.
+
+``` r
+# setup
+set.seed(123)
+
+# model
+model <-
+  stats::glm(
+    formula = am ~ wt + cyl,
+    data = mtcars,
+    family = binomial
+  )
+
+# `broom` output
+broomExtra::glance(model)
+#> # A tibble: 1 x 8
+#>   null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
+#>           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
+#> 1          43.2      31  -7.37  20.7  25.1     14.7          29    32
+
+# combined output
+broomExtra::glance_performance(model)
+#> # A tibble: 1 x 14
+#>   null.deviance df.null loglik   aic   bic deviance df.residual  nobs r2.tjur
+#>           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>   <dbl>
+#> 1          43.2      31  -7.37  20.7  25.1     14.7          29    32   0.705
+#>    rmse logloss score.log score.spherical   pcp
+#>   <dbl>   <dbl>     <dbl>           <dbl> <dbl>
+#> 1 0.678   0.230     -19.0           0.116 0.858
+```
+
 # generic functions
 
 Currently, `S3` methods for mixed-effects model objects are included in
@@ -64,9 +384,10 @@ keep track of the class of the object (e.g., “if it is `merMod` object,
 use
 `broom.mixed::tidy()`/`broom.mixed::glance()`/`broom.mixed::augment()`,
 but if it is `polr` object, use
-`broom::tidy()`/`broom::glance()`/`broom::augment()`”). Using generics
-from `broomExtra` means you no longer have to worry about this, as
-calling
+`broom::tidy()`/`broom::glance()`/`broom::augment()`”).
+
+Using generics from `broomExtra` means you no longer have to worry about
+this, as calling
 `broomExtra::tidy()`/`broomExtra::glance()`/`broomExtra::augment()` will
 search the appropriate method from these two packages and return the
 results.
@@ -92,7 +413,7 @@ broomExtra::tidy(x = lmm.mod, effects = "fixed")
 
 # linear model (`broom` will be used)
 lm.mod <- lm(Reaction ~ Days, sleepstudy)
-broomExtra::tidy(x = lm.mod, conf.int = TRUE)
+broomExtra::tidy(lm.mod, conf.int = TRUE)
 #> # A tibble: 2 x 7
 #>   term        estimate std.error statistic  p.value conf.low conf.high
 #>   <chr>          <dbl>     <dbl>     <dbl>    <dbl>    <dbl>     <dbl>
@@ -102,22 +423,17 @@ broomExtra::tidy(x = lm.mod, conf.int = TRUE)
 # another example with `broom`
 # cumulative Link Models
 clm.mod <- clm(rating ~ temp * contact, data = wine)
-broomExtra::tidy(
-  x = clm.mod,
-  exponentiate = TRUE,
-  conf.int = TRUE,
-  conf.type = "Wald"
-)
-#> # A tibble: 7 x 8
-#>   term        estimate std.error statistic  p.value conf.low conf.high coef.type
-#>   <chr>          <dbl>     <dbl>     <dbl>    <dbl>    <dbl>     <dbl> <chr>    
-#> 1 1|2            0.244     0.545    -2.59  9.66e- 3   0.0837     0.710 intercept
-#> 2 2|3            3.14      0.510     2.24  2.48e- 2   1.16       8.52  intercept
-#> 3 3|4           29.3       0.638     5.29  1.21e- 7   8.38     102.    intercept
-#> 4 4|5          140.        0.751     6.58  4.66e-11  32.1      610.    intercept
-#> 5 tempwarm      10.2       0.701     3.31  9.28e- 4   2.58      40.2   location 
-#> 6 contactyes     3.85      0.660     2.04  4.13e- 2   1.05      14.0   location 
-#> 7 tempwarm:c~    1.43      0.924     0.389 6.97e- 1   0.234      8.76  location
+broomExtra::tidy(x = clm.mod, exponentiate = TRUE)
+#> # A tibble: 7 x 6
+#>   term                estimate std.error statistic  p.value coef.type
+#>   <chr>                  <dbl>     <dbl>     <dbl>    <dbl> <chr>    
+#> 1 1|2                    0.244     0.545    -2.59  9.66e- 3 intercept
+#> 2 2|3                    3.14      0.510     2.24  2.48e- 2 intercept
+#> 3 3|4                   29.3       0.638     5.29  1.21e- 7 intercept
+#> 4 4|5                  140.        0.751     6.58  4.66e-11 intercept
+#> 5 tempwarm              10.2       0.701     3.31  9.28e- 4 location 
+#> 6 contactyes             3.85      0.660     2.04  4.13e- 2 location 
+#> 7 tempwarm:contactyes    1.43      0.924     0.389 6.97e- 1 location
 
 # unsupported object (the function will return `NULL` in such cases)
 broomExtra::tidy(list(1, c("x", "y")))
@@ -149,7 +465,9 @@ broomExtra::glance(lm.mod)
 #>   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
 #>       <dbl>         <dbl> <dbl>     <dbl>    <dbl> <dbl>  <dbl> <dbl> <dbl>
 #> 1     0.286         0.282  47.7      71.5 9.89e-15     1  -950. 1906. 1916.
-#> # ... with 3 more variables: deviance <dbl>, df.residual <int>, nobs <int>
+#>   deviance df.residual  nobs
+#>      <dbl>       <int> <int>
+#> 1  405252.         178   180
 
 # another example with `broom`
 # cumulative Link Models
@@ -190,8 +508,19 @@ broomExtra::augment(lmm.mod)
 #>  8     290.     7 308        391. -101.   0.162  1.81      325.  391.       0
 #>  9     431.     8 308        411.   19.6  0.219  0.106     335.  411.       0
 #> 10     466.     9 308        431.   35.7  0.293  0.571     346.  431.       0
-#> # ... with 170 more rows, and 4 more variables: .sqrtXwt <dbl>, .sqrtrwt <dbl>,
-#> #   .weights <dbl>, .wtres <dbl>
+#>    .sqrtXwt .sqrtrwt .weights  .wtres
+#>       <dbl>    <dbl>    <dbl>   <dbl>
+#>  1        1        1        1   -4.10
+#>  2        1        1        1  -14.6 
+#>  3        1        1        1  -42.2 
+#>  4        1        1        1    8.78
+#>  5        1        1        1   24.5 
+#>  6        1        1        1   62.7 
+#>  7        1        1        1   10.5 
+#>  8        1        1        1 -101.  
+#>  9        1        1        1   19.6 
+#> 10        1        1        1   35.7 
+#> # ... with 170 more rows
 
 # linear model
 lm.mod <- lm(Reaction ~ Days, sleepstudy)
@@ -233,175 +562,6 @@ broomExtra::augment(x = clm.mod, newdata = wine, type.predict = "prob")
 # in case no augment method is available (`NULL` will be returned)
 broomExtra::augment(stats::anova(stats::lm(wt ~ am, mtcars)))
 #> NULL
-```
-
-# hybrid generics
-
-`broom`-family of packages are not the only ones which return such tidy
-summaries for model parameters and performance. There is also
-`easystats`-family of packages that provide similar functions, more
-specifically [parameters](https://easystats.github.io/parameters/) and
-[performance](https://easystats.github.io/performance/). Sometimes
-although `broom` packages might not contain a method for a given
-regression object, `easystats` packages would and vice versa. The hybrid
-functions in `broomExtra` make it easy to retrieve these summaries with
-the appropriate method and does so robustly.
-
-## `tidy_parameters`
-
-The `tidy_parameters` will return a model summary either from
-`broom::tidy` or `parameters::model_parameters`:
-
-``` r
-# mixor object
-set.seed(123)
-library("mixor")
-data("SmokingPrevention")
-
-# data frame must be sorted by id variable
-SmokingPrevention <- SmokingPrevention[order(SmokingPrevention$class), ]
-
-# school model
-mod_mixor <-
-  mixor(
-    formula = thksord ~ thkspre + cc + tv + cctv,
-    data = SmokingPrevention,
-    id = school, link = "logit"
-  )
-
-# tidier in `broom`-family?
-broomExtra::tidy(mod_mixor)
-#> NULL
-
-# using hybrid function
-broomExtra::tidy_parameters(mod_mixor)
-#> # A tibble: 8 x 8
-#>   term           estimate std.error conf.low conf.high statistic p.value effects
-#>   <chr>             <dbl>     <dbl>    <dbl>     <dbl>     <dbl>   <dbl> <chr>  
-#> 1 (Intercept)      0.0882    0.313   -0.526      0.702     0.282  0.778  fixed  
-#> 2 Threshold2       1.24      0.0883   1.07       1.41     14.1    0      fixed  
-#> 3 Threshold3       2.42      0.0836   2.26       2.58     28.9    0      fixed  
-#> 4 thkspre          0.403     0.0429   0.319      0.487     9.39   0      fixed  
-#> 5 cc               0.924     0.371    0.196      1.65      2.49   0.0128 fixed  
-#> 6 tv               0.275     0.315   -0.342      0.893     0.873  0.383  fixed  
-#> 7 cctv            -0.466     0.406   -1.26       0.330    -1.15   0.251  fixed  
-#> 8 Random.(Inter~   0.0735    0.0495  -0.0235     0.170     1.49   0.137  random
-```
-
-These functions are also pretty robust such that they won’t fail if the
-`...` contains misspecified arguments. This makes these functions much
-easier to work with while writing wrapper functions around `broom::tidy`
-or `parameters::model_parameters`.
-
-``` r
-# setup
-set.seed(123)
-library(lavaan)
-
-# model specs
-HS.model <- " visual  =~ x1 + x2 + x3
-              textual =~ x4 + x5 + x6
-              speed   =~ x7 + x8 + x9 "
-
-# model
-mod_lavaan <-
-  lavaan(
-    HS.model,
-    data = HolzingerSwineford1939,
-    auto.var = TRUE,
-    auto.fix.first = TRUE,
-    auto.cov.lv.x = TRUE
-  )
-
-# tidy method with additional arguments
-broom::tidy(mod_lavaan, exponentiate = TRUE)
-#> Error in lavaan::parameterEstimates(x, ci = conf.int, level = conf.level, : unused argument (exponentiate = TRUE)
-
-# parameters method with additional arguments
-parameters::model_parameters(mod_lavaan, exponentiate = TRUE)
-#> Error in lavaan::parameterEstimates(model, se = TRUE, level = ci, ...): unused argument (exponentiate = TRUE)
-
-# using hybrid function
-broomExtra::tidy_parameters(mod_lavaan, exponentiate = TRUE)
-#> # A tibble: 24 x 11
-#>    term  op    estimate std.error statistic   p.value conf.low conf.high std.lv
-#>    <chr> <chr>    <dbl>     <dbl>     <dbl>     <dbl>    <dbl>     <dbl>  <dbl>
-#>  1 visu~ =~       1        0          NA    NA           1         1      0.900
-#>  2 visu~ =~       0.554    0.0997      5.55  2.80e- 8    0.358     0.749  0.498
-#>  3 visu~ =~       0.729    0.109       6.68  2.31e-11    0.516     0.943  0.656
-#>  4 text~ =~       1        0          NA    NA           1         1      0.990
-#>  5 text~ =~       1.11     0.0654     17.0   0.          0.985     1.24   1.10 
-#>  6 text~ =~       0.926    0.0554     16.7   0.          0.817     1.03   0.917
-#>  7 spee~ =~       1        0          NA    NA           1         1      0.619
-#>  8 spee~ =~       1.18     0.165       7.15  8.56e-13    0.857     1.50   0.731
-#>  9 spee~ =~       1.08     0.151       7.15  8.40e-13    0.785     1.38   0.670
-#> 10 x1 ~~ ~~       0.549    0.114       4.83  1.34e- 6    0.326     0.772  0.549
-#> # ... with 14 more rows, and 2 more variables: std.all <dbl>, std.nox <dbl>
-```
-
-Additional benefit of using this function is that it will also make sure
-that *p*-values and confidence intervals for regression estimates are
-consistently included.
-
-``` r
-# setup
-set.seed(123)
-library(MASS)
-mod <- rlm(stack.loss ~ ., stackloss)
-
-# broom output (no p-values present)
-broomExtra::tidy(mod, conf.int = TRUE)
-#> # A tibble: 4 x 6
-#>   term        estimate std.error statistic conf.low conf.high
-#>   <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#> 1 (Intercept)  -41.0       9.81     -4.18   -60.2     -21.8  
-#> 2 Air.Flow       0.829     0.111     7.46     0.611     1.05 
-#> 3 Water.Temp     0.926     0.303     3.05     0.331     1.52 
-#> 4 Acid.Conc.    -0.128     0.129    -0.992   -0.380     0.125
-
-# using `tidy_parameters` (p-values present)
-broomExtra::tidy_parameters(mod)
-#> # A tibble: 4 x 7
-#>   term        estimate std.error statistic conf.low conf.high     p.value
-#>   <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>       <dbl>
-#> 1 (Intercept)  -41.0       9.81     -4.18   -60.2     -21.8   0.000624   
-#> 2 Air.Flow       0.829     0.111     7.46     0.611     1.05  0.000000933
-#> 3 Water.Temp     0.926     0.303     3.05     0.331     1.52  0.00720    
-#> 4 Acid.Conc.    -0.128     0.129    -0.992   -0.380     0.125 0.335
-```
-
-## `glance_performance`
-
-The `glance_performance` will return a model summary either from
-`broom::glance` or `performance::model_performance`:
-
-``` r
-# mixor object
-set.seed(123)
-library("mixor")
-data("SmokingPrevention")
-
-# data frame must be sorted by id variable
-SmokingPrevention <- SmokingPrevention[order(SmokingPrevention$class), ]
-
-# school model
-mod_mixor <-
-  mixor(
-    formula = thksord ~ thkspre + cc + tv + cctv,
-    data = SmokingPrevention,
-    id = school, link = "logit"
-  )
-
-# glance method in `broom`-family?
-broomExtra::glance(mod_mixor)
-#> NULL
-
-# using hybrid function
-broomExtra::glance_performance(mod_mixor)
-#> # A tibble: 1 x 2
-#>      aic    bic
-#>    <dbl>  <dbl>
-#> 1 -2128. -2133.
 ```
 
 # `grouped_` variants of generics
@@ -455,18 +615,30 @@ broomExtra::grouped_tidy(
   tidy.args = list(conf.int = TRUE, conf.level = 0.99)
 )
 #> # A tibble: 25 x 9
-#>    cut   effect  group  term     estimate std.error statistic conf.low conf.high
-#>    <ord> <chr>   <chr>  <chr>       <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#>  1 Fair  fixed   <NA>   carat    3800.         228.      16.7    3212.     4387.
-#>  2 Fair  ran_pa~ color  sd__(In~ 2158.          NA       NA        NA        NA 
-#>  3 Fair  ran_pa~ color  cor__(I~   -0.975       NA       NA        NA        NA 
-#>  4 Fair  ran_pa~ color  sd__car~ 2545.          NA       NA        NA        NA 
-#>  5 Fair  ran_pa~ Resid~ sd__Obs~ 1830.          NA       NA        NA        NA 
-#>  6 Good  fixed   <NA>   carat    9217.         105.      87.6    8946.     9488.
-#>  7 Good  ran_pa~ color  sd__(In~ 2686.          NA       NA        NA        NA 
-#>  8 Good  ran_pa~ color  cor__(I~    0.998       NA       NA        NA        NA 
-#>  9 Good  ran_pa~ color  sd__car~ 1609.          NA       NA        NA        NA 
-#> 10 Good  ran_pa~ Resid~ sd__Obs~ 1373.          NA       NA        NA        NA 
+#>    cut   effect   group    term                   estimate std.error statistic
+#>    <ord> <chr>    <chr>    <chr>                     <dbl>     <dbl>     <dbl>
+#>  1 Fair  fixed    <NA>     carat                  3800.         228.      16.7
+#>  2 Fair  ran_pars color    sd__(Intercept)        2158.          NA       NA  
+#>  3 Fair  ran_pars color    cor__(Intercept).carat   -0.975       NA       NA  
+#>  4 Fair  ran_pars color    sd__carat              2545.          NA       NA  
+#>  5 Fair  ran_pars Residual sd__Observation        1830.          NA       NA  
+#>  6 Good  fixed    <NA>     carat                  9217.         105.      87.6
+#>  7 Good  ran_pars color    sd__(Intercept)        2686.          NA       NA  
+#>  8 Good  ran_pars color    cor__(Intercept).carat    0.998       NA       NA  
+#>  9 Good  ran_pars color    sd__carat              1609.          NA       NA  
+#> 10 Good  ran_pars Residual sd__Observation        1373.          NA       NA  
+#>    conf.low conf.high
+#>       <dbl>     <dbl>
+#>  1    3212.     4387.
+#>  2      NA        NA 
+#>  3      NA        NA 
+#>  4      NA        NA 
+#>  5      NA        NA 
+#>  6    8946.     9488.
+#>  7      NA        NA 
+#>  8      NA        NA 
+#>  9      NA        NA 
+#> 10      NA        NA 
 #> # ... with 15 more rows
 ```
 
@@ -497,8 +669,19 @@ broomExtra::grouped_glance(
 #>  8 Good  D         0.860         0.860 1729.     2065. 2.66e-145     1 -2981.
 #>  9 Good  E         0.870         0.870 1674.     3084. 2.50e-206     1 -4084.
 #> 10 Good  F         0.873         0.873 1677.     3110. 1.76e-204     1 -3997.
-#> # ... with 25 more rows, and 5 more variables: AIC <dbl>, BIC <dbl>,
-#> #   deviance <dbl>, df.residual <int>, nobs <int>
+#>      AIC   BIC    deviance df.residual  nobs
+#>    <dbl> <dbl>       <dbl>       <int> <int>
+#>  1 1524. 1529.  289568733.          84    85
+#>  2 1749. 1754.  187724139.         100   101
+#>  3 2816. 2822.  613473518.         155   156
+#>  4 2893. 2899.  722351124.         158   159
+#>  5 2618. 2624.  820050299.         141   142
+#>  6 1400. 1405.  177605917.          79    80
+#>  7 1005. 1009.  258660541.          54    55
+#>  8 5966. 5974. 1001144317.         335   336
+#>  9 8173. 8181. 1291712250.         461   462
+#> 10 7998. 8006. 1267954026.         451   452
+#> # ... with 25 more rows
 
 # linear mixed effects model (model summaries across grouping combinations)
 broomExtra::grouped_glance(
@@ -555,20 +738,31 @@ broomExtra::grouped_augment(
   control = lme4::lmerControl(optimizer = "bobyqa")
 )
 #> # A tibble: 26,970 x 15
-#>    cut   price carat color .fitted .resid    .hat .cooksd .fixed   .mu .offset
-#>    <ord> <int> <dbl> <ord>   <dbl>  <dbl>   <dbl>   <dbl>  <dbl> <dbl>   <dbl>
-#>  1 Fair   8818  1.52 H       7001.  1817. 0.00806 8.37e-3  3519. 7001.       0
-#>  2 Fair   1881  0.65 F       2104.  -223. 0.00225 3.46e-5  1505. 2104.       0
-#>  3 Fair   2376  1.2  G       5439. -3063. 0.00651 1.91e-2  2778. 5439.       0
-#>  4 Fair   1323  0.5  D       1069.   254. 0.00281 5.65e-5  1158. 1069.       0
-#>  5 Fair   3282  0.92 F       3935.  -653. 0.00338 4.48e-4  2130. 3935.       0
-#>  6 Fair   2500  0.7  H       2259.   241. 0.00219 3.96e-5  1621. 2259.       0
-#>  7 Fair  13853  1.5  F       7868.  5985. 0.0149  1.70e-1  3473. 7868.       0
-#>  8 Fair   3869  1.01 H       4052.  -183. 0.00287 2.97e-5  2338. 4052.       0
-#>  9 Fair   1811  0.7  H       2259.  -448. 0.00219 1.37e-4  1621. 2259.       0
-#> 10 Fair   2788  1.01 E       4406. -1618. 0.0135  1.12e-2  2338. 4406.       0
-#> # ... with 26,960 more rows, and 4 more variables: .sqrtXwt <dbl>,
-#> #   .sqrtrwt <dbl>, .weights <dbl>, .wtres <dbl>
+#>    cut   price carat color .fitted .resid    .hat   .cooksd .fixed   .mu .offset
+#>    <ord> <int> <dbl> <ord>   <dbl>  <dbl>   <dbl>     <dbl>  <dbl> <dbl>   <dbl>
+#>  1 Fair   8818  1.52 H       7001.  1817. 0.00806 0.00837    3519. 7001.       0
+#>  2 Fair   1881  0.65 F       2104.  -223. 0.00225 0.0000346  1505. 2104.       0
+#>  3 Fair   2376  1.2  G       5439. -3063. 0.00651 0.0191     2778. 5439.       0
+#>  4 Fair   1323  0.5  D       1069.   254. 0.00281 0.0000565  1158. 1069.       0
+#>  5 Fair   3282  0.92 F       3935.  -653. 0.00338 0.000448   2130. 3935.       0
+#>  6 Fair   2500  0.7  H       2259.   241. 0.00219 0.0000396  1621. 2259.       0
+#>  7 Fair  13853  1.5  F       7868.  5985. 0.0149  0.170      3473. 7868.       0
+#>  8 Fair   3869  1.01 H       4052.  -183. 0.00287 0.0000297  2338. 4052.       0
+#>  9 Fair   1811  0.7  H       2259.  -448. 0.00219 0.000137   1621. 2259.       0
+#> 10 Fair   2788  1.01 E       4406. -1618. 0.0135  0.0112     2338. 4406.       0
+#>    .sqrtXwt .sqrtrwt .weights .wtres
+#>       <dbl>    <dbl>    <dbl>  <dbl>
+#>  1        1        1        1  1817.
+#>  2        1        1        1  -223.
+#>  3        1        1        1 -3063.
+#>  4        1        1        1   254.
+#>  5        1        1        1  -653.
+#>  6        1        1        1   241.
+#>  7        1        1        1  5985.
+#>  8        1        1        1  -183.
+#>  9        1        1        1  -448.
+#> 10        1        1        1 -1618.
+#> # ... with 26,960 more rows
 ```
 
 # Code coverage
@@ -588,3 +782,10 @@ are encouraged.
 Please note that this project is released with a [Contributor Code of
 Conduct](https://github.com/IndrajeetPatil/broomExtra/blob/master/CODE_OF_CONDUCT.md).
 By participating in this project you agree to abide by its terms.
+
+# Acknowledgments
+
+The hexsticker was generously designed by Sarah Otterstetter (Max Planck
+Institute for Human Development, Berlin). Thanks are also due to the
+maintainers and contributors to `broom`- and `easystats`-package
+families who have indulged in all my feature requests. 😄

@@ -1,8 +1,18 @@
+# broomExtra 2.5.0
+
+  - The `glance_performance` function now returns a combined summary dataframe
+    from `broom` and `performance` packages, if both are available. This was
+    done to include some unique performance measures that only the `performance`
+    package contains (e.g., Nagelkerke's $R^2$, Tjur's $R^2$, etc.).
+    
+  - Thanks to Sarah, the package now has a hexsticker.
+
 # broomExtra 2.0.0
 
   - New functions that make it easy to access tidy dataframes from both
     `broom`-family and `easystats`-family packages with the following functions:
     `tidy_parameters` and `glance_performance`.
+    
   - `tidy` method no longer attempt to convert entered objects to a tibble as a
     last resort as this was converting model objects in case the tidiers failed
     for some reason.

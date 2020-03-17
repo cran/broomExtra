@@ -2,7 +2,7 @@
 % Please edit documentation in R/generics_easystats.R
 \name{glance_performance}
 \alias{glance_performance}
-\title{glance_performance}
+\title{Model performance summary dataframes using \code{broom} and \code{easystats}.}
 \usage{
 glance_performance(x, ...)
 }
@@ -19,10 +19,12 @@ Computes indices of model performance for regression models.
 }
 \details{
 The function will attempt to get these details either using
-\code{broom::glance} or \code{performance::model_performance}.
+\code{broom::glance} or \code{performance::model_performance}. If both function
+provide model performance measure summaries, the function will try to
+combine them into a single dataframe.
 }
 \examples{
 set.seed(123)
 mod <- lm(mpg ~ wt + cyl, data = mtcars)
-glance_performance(mod, conf.int = TRUE)
+broomExtra::glance_performance(mod)
 }
