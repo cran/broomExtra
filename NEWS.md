@@ -1,3 +1,12 @@
+# broomExtra 3.0.0
+
+  - Slight modification to `easystats_to_tidy_names` to cover naming patterns
+    from a few more `easystats` packages.
+    
+  - Minimum R version bumped to `3.6.0`.
+  
+  - Relies on `ipmisc` package for re-exports.
+
 # broomExtra 2.5.0
 
   - The `glance_performance` function now returns a combined summary dataframe
