@@ -4,9 +4,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ----setup--------------------------------------------------------------------
-library(broomExtra)
-
 ## ----list, echo = FALSE, message = FALSE--------------------------------------
 # loading the needed libraries
 library(dplyr)
@@ -32,4 +29,7 @@ method_df("tidy") %>%
   dplyr::left_join(x = ., y = method_df("augment")) %>%
   dplyr::mutate_all(.tbl = ., .funs = tidyr::replace_na, "") %>%
   knitr::kable()
+
+## -----------------------------------------------------------------------------
+insight::supported_models()
 

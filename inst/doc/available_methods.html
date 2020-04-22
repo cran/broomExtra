@@ -12,7 +12,7 @@
 
 <meta name="author" content="Indrajeet Patil" />
 
-<meta name="date" content="2020-04-11" />
+<meta name="date" content="2020-04-22" />
 
 <title>Available methods</title>
 
@@ -315,27 +315,33 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Available methods</h1>
 <h4 class="author">Indrajeet Patil</h4>
-<h4 class="date">2020-04-11</h4>
+<h4 class="date">2020-04-22</h4>
 
 
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#methods">Methods</a></li>
+<li><a href="#the-broom-ecosystem">The <code>broom</code> ecosystem</a></li>
+<li><a href="#the-easystats-ecosystem">The <code>easystats</code> ecosystem</a></li>
 </ul>
 </div>
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(broomExtra)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#&gt; Registered S3 method overwritten by &#39;broom.mixed&#39;:</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#&gt;   method      from </span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt;   tidy.gamlss broom</span></span></code></pre></div>
-<p>Currently, <code>S3</code> methods for mixed-effects model objects are included in the <code>broom.mixed</code> package, while the rest of the object classes are included in the <code>broom</code> package. This means that you constantly need to keep track of the class of the object (e.g., “if it is <code>merMod</code> object, use <code>broom.mixed::tidy()</code>/<code>broom.mixed::glance()</code>/<code>broom.mixed::augment()</code>, but if it is <code>polr</code> object, use <code>broom::tidy()</code>/<code>broom::glance()</code>/<code>broom::augment()</code>”). Using generics from <code>broomExtra</code> means you no longer have to worry about this, as calling <code>broomExtra::tidy()</code>/<code>broomExtra::glance()</code>/<code>broomExtra::augment()</code> will search the appropriate method from these two packages and return the results.</p>
+<p>The goal of <code>broomExtra</code> is to provide helper functions that assist in data analysis workflows involving regression analyses. The goal is to combine the functionality offered by different set of packages through a common syntax to return tidy tibbles containing model parameters and summaries.</p>
+<p>The package internally relies on the following packages that I contribute to:</p>
+<ul>
+<li><code>broom</code></li>
+<li><code>broom.mixed</code></li>
+<li><code>parameters</code></li>
+<li><code>performance</code></li>
+</ul>
+<p>Here is a summary of supported methods across these ecosystems.</p>
 </div>
-<div id="methods" class="section level1">
-<h1>Methods</h1>
-<p>In this vignette, we list all available methods currently available across these two packages.</p>
+<div id="the-broom-ecosystem" class="section level1">
+<h1>The <code>broom</code> ecosystem</h1>
+<p>Currently, <code>S3</code> methods for mixed-effects model objects are included in the <code>broom.mixed</code> package, while the rest of the object classes are included in the <code>broom</code> package. This means that you constantly need to keep track of the class of the object (e.g., “if it is <code>merMod</code> object, use <code>broom.mixed::tidy()</code>/<code>broom.mixed::glance()</code>/<code>broom.mixed::augment()</code>, but if it is <code>polr</code> object, use <code>broom::tidy()</code>/<code>broom::glance()</code>/<code>broom::augment()</code>”). Using generics from <code>broomExtra</code> means you no longer have to worry about this, as calling <code>broomExtra::tidy()</code>/<code>broomExtra::glance()</code>/<code>broomExtra::augment()</code> will search the appropriate method from these two packages and return the results.</p>
+<p>Here are all available methods currently available in <code>broom</code> ecosystem:</p>
 <table>
 <thead>
 <tr class="header">
@@ -1146,6 +1152,51 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </tr>
 </tbody>
 </table>
+</div>
+<div id="the-easystats-ecosystem" class="section level1">
+<h1>The <code>easystats</code> ecosystem</h1>
+<p>Here are all available methods currently available in <code>easystats</code> ecosystem:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>insight<span class="op">::</span><span class="kw">supported_models</span>()</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#&gt;   [1] &quot;Arima&quot;             &quot;BBmm&quot;              &quot;BBreg&quot;            </span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#&gt;   [4] &quot;BFBayesFactor&quot;     &quot;DirichletRegModel&quot; &quot;Gam&quot;              </span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt;   [7] &quot;LORgee&quot;            &quot;MANOVA&quot;            &quot;MCMCglmm&quot;         </span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#&gt;  [10] &quot;MixMod&quot;            &quot;RM&quot;                &quot;aareg&quot;            </span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#&gt;  [13] &quot;afex_aov&quot;          &quot;aov&quot;               &quot;aovlist&quot;          </span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt;  [16] &quot;averaging&quot;         &quot;bamlss&quot;            &quot;bamlss.frame&quot;     </span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt;  [19] &quot;bayesx&quot;            &quot;bcplm&quot;             &quot;betareg&quot;          </span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt;  [22] &quot;bife&quot;              &quot;bigglm&quot;            &quot;biglm&quot;            </span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#&gt;  [25] &quot;blavaan&quot;           &quot;bracl&quot;             &quot;brglm&quot;            </span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt;  [28] &quot;brmsfit&quot;           &quot;brmultinom&quot;        &quot;censReg&quot;          </span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt;  [31] &quot;cgam&quot;              &quot;cgamm&quot;             &quot;cglm&quot;             </span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#&gt;  [34] &quot;clm&quot;               &quot;clm2&quot;              &quot;clmm&quot;             </span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#&gt;  [37] &quot;clmm2&quot;             &quot;clogit&quot;            &quot;complmrob&quot;        </span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt;  [40] &quot;coxme&quot;             &quot;coxph&quot;             &quot;cpglm&quot;            </span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt;  [43] &quot;cpglmm&quot;            &quot;crch&quot;              &quot;crq&quot;              </span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt;  [46] &quot;crqs&quot;              &quot;feglm&quot;             &quot;feis&quot;             </span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt;  [49] &quot;felm&quot;              &quot;fixest&quot;            &quot;flexsurvreg&quot;      </span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#&gt;  [52] &quot;gam&quot;               &quot;gamlss&quot;            &quot;gamm&quot;             </span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#&gt;  [55] &quot;gamm4&quot;             &quot;gbm&quot;               &quot;gee&quot;              </span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#&gt;  [58] &quot;geeglm&quot;            &quot;glimML&quot;            &quot;glm&quot;              </span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#&gt;  [61] &quot;glmRob&quot;            &quot;glmmPQL&quot;           &quot;glmmTMB&quot;          </span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co">#&gt;  [64] &quot;glmmadmb&quot;          &quot;glmrob&quot;            &quot;glmx&quot;             </span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co">#&gt;  [67] &quot;gls&quot;               &quot;gmnl&quot;              &quot;htest&quot;            </span></span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="co">#&gt;  [70] &quot;hurdle&quot;            &quot;iv_robust&quot;         &quot;ivreg&quot;            </span></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="co">#&gt;  [73] &quot;lavaan&quot;            &quot;lm&quot;                &quot;lmRob&quot;            </span></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co">#&gt;  [76] &quot;lm_robust&quot;         &quot;lme&quot;               &quot;lmerMod&quot;          </span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co">#&gt;  [79] &quot;lmerModLmerTest&quot;   &quot;lmrob&quot;             &quot;logistf&quot;          </span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#&gt;  [82] &quot;lrm&quot;               &quot;maxLik&quot;            &quot;mclogit&quot;          </span></span>
+<span id="cb1-30"><a href="#cb1-30"></a><span class="co">#&gt;  [85] &quot;mcmc&quot;              &quot;merMod&quot;            &quot;mixed&quot;            </span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co">#&gt;  [88] &quot;mixor&quot;             &quot;mlm&quot;               &quot;mlogit&quot;           </span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co">#&gt;  [91] &quot;mmlogit&quot;           &quot;multinom&quot;          &quot;ols&quot;              </span></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="co">#&gt;  [94] &quot;plm&quot;               &quot;polr&quot;              &quot;psm&quot;              </span></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="co">#&gt;  [97] &quot;rlm&quot;               &quot;rlmerMod&quot;          &quot;rma&quot;              </span></span>
+<span id="cb1-35"><a href="#cb1-35"></a><span class="co">#&gt; [100] &quot;rma.uni&quot;           &quot;rq&quot;                &quot;rqss&quot;             </span></span>
+<span id="cb1-36"><a href="#cb1-36"></a><span class="co">#&gt; [103] &quot;speedglm&quot;          &quot;speedlm&quot;           &quot;stanmvreg&quot;        </span></span>
+<span id="cb1-37"><a href="#cb1-37"></a><span class="co">#&gt; [106] &quot;stanreg&quot;           &quot;survfit&quot;           &quot;survreg&quot;          </span></span>
+<span id="cb1-38"><a href="#cb1-38"></a><span class="co">#&gt; [109] &quot;svyglm&quot;            &quot;svyolr&quot;            &quot;tobit&quot;            </span></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="co">#&gt; [112] &quot;truncreg&quot;          &quot;vgam&quot;              &quot;vglm&quot;             </span></span>
+<span id="cb1-40"><a href="#cb1-40"></a><span class="co">#&gt; [115] &quot;wbgee&quot;             &quot;wblm&quot;              &quot;wbm&quot;              </span></span>
+<span id="cb1-41"><a href="#cb1-41"></a><span class="co">#&gt; [118] &quot;zcpglm&quot;            &quot;zeroinfl&quot;          &quot;zerotrunc&quot;</span></span></code></pre></div>
 </div>
 
 

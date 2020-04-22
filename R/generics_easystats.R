@@ -1,46 +1,37 @@
 #' @name tidy_parameters
 #' @title Tidy dataframes of model parameters using `broom` and `easystats`.
 #' @description Computes parameters for regression models.
+#'
 #' @inheritParams tidy
 #' @param conf.int Indicating whether or not to include a confidence interval in
 #'   the tidied output.
+#' @param ... Additional arguments that will be passed to
+#'   `parameters::model_parameters` and `broom::tidy`.
+#'
 #' @return A data frame of indices related to the model's parameters.
-#' @details The function will attempt to get these details either using
-#'   `broom::tidy` or `parameters::model_parameters`.
+#'
+#' @details The function will attempt to get these details first using
+#'   `parameters::model_parameters` and then using `broom::tidy`.
 #'
 #' @examples
 #' set.seed(123)
 #' mod <- lm(mpg ~ wt + cyl, data = mtcars)
 #' broomExtra::tidy_parameters(mod)
+#'
 #' @importFrom rlang is_null
-#' @importFrom parameters model_parameters p_value
+#' @importFrom parameters model_parameters
 #'
 #' @export
 
 tidy_parameters <- function(x, conf.int = TRUE, ...) {
-  # broom family --------------------------------------------
-  # check if `broom` family has a tidy method for a given object
+  # easystats family ---------------------------------------
+  # check if `easystats` family has a tidy method for a given object
   m <- tryCatch(
-    expr = broomExtra::tidy(x, conf.int = conf.int, ...),
+    expr = parameters::model_parameters(x, ...) %>%
+      easystats_to_tidy_names(.),
     error = function(e) NULL
   )
 
-  if (rlang::is_null(m)) {
-    m <- tryCatch(
-      expr = broomExtra::tidy(x, conf.int = conf.int),
-      error = function(e) NULL
-    )
-  }
-
-  # easystats family ---------------------------------------
-  # check if `easystats` family has a tidy method for a given object
-  if (rlang::is_null(m)) {
-    m <- tryCatch(
-      expr = parameters::model_parameters(x, ...) %>%
-        easystats_to_tidy_names(.),
-      error = function(e) NULL
-    )
-  }
 
   if (rlang::is_null(m)) {
     m <- tryCatch(
@@ -50,19 +41,19 @@ tidy_parameters <- function(x, conf.int = TRUE, ...) {
     )
   }
 
-  # p-value check -----------------------------------------------
-  if (!rlang::is_null(m) && !"p.value" %in% names(m)) {
-    tryCatch(
-      expr = m %<>%
-        dplyr::full_join(
-          x = .,
-          y = parameters::p_value(x, ...) %>%
-            dplyr::rename(.data = ., p.value = p),
-          by = c("term" = "Parameter")
-        ) %>%
-        dplyr::filter(.data = ., !is.na(estimate)) %>%
-        as_tibble(.),
-      error = function(e) m
+  # broom family --------------------------------------------
+  # check if `broom` family has a tidy method for a given object
+  if (rlang::is_null(m)) {
+    m <- tryCatch(
+      expr = broomExtra::tidy(x, conf.int = conf.int, ...),
+      error = function(e) NULL
+    )
+  }
+
+  if (rlang::is_null(m)) {
+    m <- tryCatch(
+      expr = broomExtra::tidy(x, conf.int = conf.int),
+      error = function(e) NULL
     )
   }
 

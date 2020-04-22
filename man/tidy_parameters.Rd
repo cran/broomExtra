@@ -12,7 +12,8 @@ tidy_parameters(x, conf.int = TRUE, ...)
 \item{conf.int}{Indicating whether or not to include a confidence interval in
 the tidied output.}
 
-\item{...}{Additional arguments to tidying method.}
+\item{...}{Additional arguments that will be passed to
+\code{parameters::model_parameters} and \code{broom::tidy}.}
 }
 \value{
 A data frame of indices related to the model's parameters.
@@ -21,11 +22,12 @@ A data frame of indices related to the model's parameters.
 Computes parameters for regression models.
 }
 \details{
-The function will attempt to get these details either using
-\code{broom::tidy} or \code{parameters::model_parameters}.
+The function will attempt to get these details first using
+\code{parameters::model_parameters} and then using \code{broom::tidy}.
 }
 \examples{
 set.seed(123)
 mod <- lm(mpg ~ wt + cyl, data = mtcars)
 broomExtra::tidy_parameters(mod)
+
 }
