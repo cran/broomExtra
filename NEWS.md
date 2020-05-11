@@ -1,3 +1,10 @@
+# broomExtra 4.0.1
+
+  - Minor changes made to fix warnings caused by `dplyr 1.0.0`.
+  
+  - Retired vignette. Check out respective packages to see what methods are
+    supported.
+
 # broomExtra 4.0.0
 
   - The `broom` package is not being actively maintained, which had become a
