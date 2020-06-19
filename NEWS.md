@@ -1,4 +1,8 @@
-# broomExtra 4.0.1
+# broomExtra 4.0.3
+
+  - Minor release to fix `NOTE` produced in new `R`-devel checks.
+
+# broomExtra 4.0.2
 
   - Minor changes made to fix warnings caused by `dplyr 1.0.0`.
   
