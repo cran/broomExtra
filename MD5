@@ -1,15 +1,15 @@
-d2730fd5f52ce408d8f129786104afbf *DESCRIPTION
+ebf5f00569e48fa4549a5450219d36b5 *DESCRIPTION
 e62637ea8a114355b985fd86c9ffbd6e *LICENSE
 8b77db3ffcc253e2aea7db6c50c0bc97 *NAMESPACE
-34942aa9e2acbfbd330c5b4447c34088 *NEWS.md
-7d4083743428220fb19f36c063154028 *R/easystats_to_tidy_names.R
+710f66b66b43ce07da0679c42af31c26 *NEWS.md
+e9a30e6be46b3d1515e896792a1affb1 *R/easystats_to_tidy_names.R
 2fda537fec16eeee70bf644eee50cda5 *R/generics.R
 3ba65d8e0015589e83d2be5b92b82eed *R/generics_easystats.R
 b823a2e053409e25034219925556e9ca *R/global_vars.R
 897d07713fea6daf9fa096287775c9ed *R/grouped_generics.R
 132ba7aa353278280d0fc04f9043d213 *R/reexports.R
-8a89d50b67ada563388f58fc63ea6296 *README.md
-ece6237b767dc022eeb7b8885774386a *build/broomExtra.pdf
+eddb1c91f92de5fcf3cf2eebcfea9fa6 *README.md
+4c1cebda72a4f3fc6132b4f100a8d3da *build/broomExtra.pdf
 11bdcef17f9931844d5e4043a627cc72 *inst/WORDLIST
 94ff62ef4b53d88a74052fafcdbb2cb2 *man/augment.Rd
 8eb7c2bba6346df07eaf11ce1ea350c3 *man/easystats_to_tidy_names.Rd
@@ -28,4 +28,4 @@ dbd9bab057163c01c320d0b9d3bb9620 *tests/spelling.R
 74420307ddb773c521874cbec322068c *tests/testthat/test-easystats_to_tidy_names.R
 a64410520a30a5c9627d80c1473d1792 *tests/testthat/test-generics.R
 cd090473b6263854f9c5e99cb7b2cf8c *tests/testthat/test-grouped_generics.R
-52aede1288e5e0ab4c3ee55e072e5207 *tests/testthat/test-hybrid_generics.R
+0d90ca4165b4f73d38908cfa17005673 *tests/testthat/test-hybrid_generics.R
