@@ -1,3 +1,7 @@
+# broomExtra 4.0.5
+
+  - More comprehensive coverage of terms from `easystats` packages.
+
 # broomExtra 4.0.4
 
   - Adapts tests to changes made to `parameters` package. 
