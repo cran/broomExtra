@@ -15,7 +15,7 @@ glance(x, ...)
 Check if a \code{glance} method exits for a given object, either in
 \code{broom} or in \code{broom.mixed}. If it does, return the model summary
 dataframe, if not, return a \code{NULL}. In this case, you can try the
-\code{broomExtra::glance_performance} function.
+\code{\link[=glance_performance]{glance_performance()}} function.
 }
 \section{Methods}{
 
@@ -26,14 +26,7 @@ dataframe, if not, return a \code{NULL}. In this case, you can try the
 
 \examples{
 set.seed(123)
-library(lme4)
-
-# mixed-effects models (`broom.mixed` will be used)
-lmm.mod <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
-broomExtra::glance(lmm.mod)
-
-# linear model (`broom` will be used)
-lm.mod <- lm(Reaction ~ Days, sleepstudy)
+lm.mod <- lm(Sepal.Length ~ Species, iris)
 broomExtra::glance(lm.mod)
 }
 \seealso{

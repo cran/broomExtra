@@ -29,14 +29,7 @@ dataframe, if not, return a \code{NULL}.
 
 \examples{
 set.seed(123)
-library(lme4)
-
-# mixed-effects models (`broom.mixed` will be used)
-lmm.mod <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
-broomExtra::augment(lmm.mod)
-
-# linear model (`broom` will be used)
-lm.mod <- lm(Reaction ~ Days, sleepstudy)
+lm.mod <- lm(Sepal.Length ~ Species, iris)
 broomExtra::augment(lm.mod)
 }
 \seealso{

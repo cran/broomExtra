@@ -18,7 +18,7 @@ A \code{\link[tibble:tibble]{tibble::tibble()}} with information about model com
 Checks if a \code{tidy} method exits for a given object, either in
 \code{broom} or in \code{broom.mixed}. If it does, it turn an object into a tidy
 tibble, if not, return a \code{NULL}. In this case, you can try the
-\code{broomExtra::tidy_parameters} function.
+\code{\link[=tidy_parameters]{tidy_parameters()}} function.
 }
 \section{Methods}{
 
@@ -29,18 +29,8 @@ tibble, if not, return a \code{NULL}. In this case, you can try the
 
 \examples{
 set.seed(123)
-library(lme4)
-
-# mixed-effects models (`broom.mixed` will be used)
-lmm.mod <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
-broomExtra::tidy(x = lmm.mod, effects = "fixed", exponentiate = TRUE)
-
-# linear model (`broom` will be used)
-lm.mod <- lm(Reaction ~ Days, sleepstudy)
+lm.mod <- lm(Sepal.Length ~ Species, iris)
 broomExtra::tidy(x = lm.mod, conf.int = TRUE)
-
-# unsupported object (the function will return `NULL` in such cases)
-broomExtra::tidy(list(1, c("x", "y")))
 }
 \seealso{
 \code{\link{grouped_tidy}}, \code{\link{tidy_parameters}}

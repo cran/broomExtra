@@ -36,11 +36,9 @@ grouped_tidy <- function(data,
                          ..f,
                          ...,
                          tidy.args = list()) {
-
   # functions passed to `group_modify` must accept
   # `.x` and `.y` arguments, where `.x` is the data
   tidy_group <- function(.x, .y) {
-
     # presumes `..f` will work with these args
     model <- ..f(.y = ..., data = .x)
 
@@ -87,7 +85,6 @@ grouped_glance <- function(data,
   # functions passed to `group_modify` must accept
   # `.x` and `.y` arguments, where `.x` is the data
   glance_group <- function(.x, .y) {
-
     # presumes `..f` will work with these args
     model <- ..f(.y = ..., data = .x)
 
@@ -136,7 +133,6 @@ grouped_augment <- function(data,
   # functions passed to `group_modify` must accept
   # `.x` and `.y` arguments, where `.x` is the data
   augment_group <- function(.x, .y) {
-
     # presumes `..f` will work with these args
     model <- ..f(.y = ..., data = .x)
 

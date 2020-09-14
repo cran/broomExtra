@@ -6,12 +6,12 @@
 #' @param conf.int Indicating whether or not to include a confidence interval in
 #'   the tidied output.
 #' @param ... Additional arguments that will be passed to
-#'   `parameters::model_parameters` and `broom::tidy`.
+#'   [parameters::model_parameters()] and [broom::tidy()].
 #'
 #' @return A data frame of indices related to the model's parameters.
 #'
 #' @details The function will attempt to get these details first using
-#'   `parameters::model_parameters` and then using `broom::tidy`.
+#'   [parameters::model_parameters()] and then using [broom::tidy()].
 #'
 #' @examples
 #' set.seed(123)
@@ -56,12 +56,7 @@ tidy_parameters <- function(x, conf.int = TRUE, ...) {
 
   # last attempt: dataframe ---------------------------------------
   # if not, try to convert it to a tibble (relevant for dataframe)
-  if (rlang::is_null(m)) {
-    m <- tryCatch(
-      expr = as_tibble(x, ...),
-      error = function(e) NULL
-    )
-  }
+  if (rlang::is_null(m)) m <- tryCatch(as_tibble(x, ...), error = function(e) NULL)
 
   # return the final object
   return(m)
@@ -75,7 +70,7 @@ tidy_parameters <- function(x, conf.int = TRUE, ...) {
 #' @return A data frame (with one row) and one column per "index".
 #'
 #' @details The function will attempt to get these details either using
-#'   `broom::glance` or `performance::model_performance`. If both function
+#'   [broom::glance()] or [performance::model_performance()]. If both function
 #'   provide model performance measure summaries, the function will try to
 #'   combine them into a single dataframe.
 #'
@@ -92,10 +87,7 @@ tidy_parameters <- function(x, conf.int = TRUE, ...) {
 glance_performance <- function(x, ...) {
   # broom family --------------------------------------------
   # check if `broom` family has a tidy method for a given object
-  df_broom <- tryCatch(
-    expr = broomExtra::glance(x),
-    error = function(e) NULL
-  )
+  df_broom <- tryCatch(broomExtra::glance(x), error = function(e) NULL)
 
   # for consistency with `performance` output, convert column names to lowercase
   if (!rlang::is_null(df_broom)) df_broom %<>% dplyr::rename_all(., .f = tolower)
