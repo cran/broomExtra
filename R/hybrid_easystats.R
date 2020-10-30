@@ -18,27 +18,29 @@
 #' mod <- lm(mpg ~ wt + cyl, data = mtcars)
 #' broomExtra::tidy_parameters(mod)
 #' @importFrom rlang is_null
-#' @importFrom parameters model_parameters
+#' @importFrom parameters model_parameters standardize_names
 #'
 #' @export
 
 tidy_parameters <- function(x, conf.int = TRUE, ...) {
   # easystats family ---------------------------------------
+
   # check if `easystats` family has a tidy method for a given object
   m <- tryCatch(
-    expr = easystats_to_tidy_names(parameters::model_parameters(x, ...)),
+    expr = standardize_names(parameters::model_parameters(x, ...), style = "broom"),
     error = function(e) NULL
   )
 
 
   if (rlang::is_null(m)) {
     m <- tryCatch(
-      expr = easystats_to_tidy_names(parameters::model_parameters(x)),
+      expr = standardize_names(parameters::model_parameters(x), style = "broom"),
       error = function(e) NULL
     )
   }
 
   # broom family --------------------------------------------
+
   # check if `broom` family has a tidy method for a given object
   if (rlang::is_null(m)) {
     m <- tryCatch(
@@ -47,19 +49,8 @@ tidy_parameters <- function(x, conf.int = TRUE, ...) {
     )
   }
 
-  if (rlang::is_null(m)) {
-    m <- tryCatch(
-      expr = broomExtra::tidy(x, conf.int = conf.int),
-      error = function(e) NULL
-    )
-  }
-
-  # last attempt: dataframe ---------------------------------------
-  # if not, try to convert it to a tibble (relevant for dataframe)
-  if (rlang::is_null(m)) m <- tryCatch(as_tibble(x, ...), error = function(e) NULL)
-
   # return the final object
-  return(m)
+  if (rlang::is_null(m)) m else as_tibble(m)
 }
 
 
@@ -87,7 +78,7 @@ tidy_parameters <- function(x, conf.int = TRUE, ...) {
 glance_performance <- function(x, ...) {
   # broom family --------------------------------------------
   # check if `broom` family has a tidy method for a given object
-  df_broom <- tryCatch(broomExtra::glance(x), error = function(e) NULL)
+  df_broom <- tryCatch(broomExtra::glance(x, ...), error = function(e) NULL)
 
   # for consistency with `performance` output, convert column names to lowercase
   if (!rlang::is_null(df_broom)) df_broom %<>% dplyr::rename_all(., .f = tolower)
@@ -95,7 +86,10 @@ glance_performance <- function(x, ...) {
   # easystats family ---------------------------------------
   # check if `easystats` family has a tidy method for a given object
   df_performance <- tryCatch(
-    expr = easystats_to_tidy_names(performance::model_performance(x, metrics = "all")),
+    expr = standardize_names(
+      data = performance::model_performance(x, metrics = "all", ...),
+      style = "broom"
+    ),
     error = function(e) NULL
   )
 
@@ -114,5 +108,5 @@ glance_performance <- function(x, ...) {
   if (rlang::is_null(df_performance)) df_combined <- df_broom
 
   # return the final object
-  return(df_combined)
+  if (rlang::is_null(df_combined)) df_combined else as_tibble(df_combined)
 }

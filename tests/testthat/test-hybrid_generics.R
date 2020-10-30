@@ -3,6 +3,8 @@
 testthat::test_that(
   desc = "hybrid methods works",
   code = {
+    testthat::skip_on_cran()
+
     library(lme4)
     # merMord
     set.seed(123)
@@ -16,14 +18,6 @@ testthat::test_that(
       tolerance = 0.001
     )
 
-    testthat::expect_identical(
-      names(df_lmm),
-      c(
-        "term", "estimate", "std.error", "conf.low", "conf.high", "statistic",
-        "df.error", "p.value"
-      )
-    )
-
     testthat::expect_equal(
       dim(glance_performance(lmm_mod, effects = "fixed")), c(1L, 10L)
     )
@@ -34,32 +28,11 @@ testthat::test_that(
     df_lm <- tidy_parameters(lm_mod, robust = TRUE)
 
     # test
-    testthat::expect_equal(df_lm$df.error[1], 178L)
+    testthat::expect_equal(df_lm$estimate[1], 251.4051, tolerance = 0.001)
 
     testthat::expect_equal(
       dim(glance_performance(lm_mod, effects = "fixed"))[[1]], 1L
     )
-
-    # mixor object
-    set.seed(123)
-    library(mixor)
-    data("SmokingPrevention")
-    SmokingPrevention <- SmokingPrevention[order(SmokingPrevention$class), ]
-    suppressWarnings(mod_mixor <-
-      mixor(
-        formula = thksord ~ thkspre + cc + tv + cctv,
-        data = SmokingPrevention,
-        id = school,
-        link = "logit"
-      ))
-
-    # test
-    testthat::expect_equal(dim(tidy_parameters(mod_mixor))[[1]], 8L)
-    testthat::expect_equal(
-      tidy_parameters(mod_mixor),
-      tidy_parameters(mod_mixor, effects = "fixed")
-    )
-    testthat::expect_equal(dim(glance_performance(mod_mixor)), c(1L, 2L))
 
     # setup
     set.seed(123)
@@ -101,6 +74,9 @@ testthat::test_that(
       dim(broomExtra::tidy_parameters(acf(lh, plot = FALSE))),
       c(17L, 2L)
     )
+
+    # where functions are not supposed to work
     testthat::expect_null(broomExtra::glance_performance(acf(lh, plot = FALSE)))
+    testthat::expect_null(broomExtra::tidy_parameters(list(1, c("x", "y")), verbose = FALSE))
   }
 )
