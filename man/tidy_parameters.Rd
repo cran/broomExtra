@@ -10,20 +10,27 @@ tidy_parameters(x, conf.int = TRUE, ...)
 \item{x}{An object to be converted into a tidy \code{\link[tibble:tibble]{tibble::tibble()}}.}
 
 \item{conf.int}{Indicating whether or not to include a confidence interval in
-the tidied output.}
+the tidied output (defaults to \code{TRUE}).}
 
 \item{...}{Additional arguments that will be passed to
-\code{\link[parameters:model_parameters]{parameters::model_parameters()}} and \code{\link[broom:reexports]{broom::tidy()}}.}
+\code{\link[parameters:model_parameters]{parameters::model_parameters()}} or \code{\link[broom:reexports]{broom::tidy()}}, whichever method
+works. Note that you should pay attention to different naming conventions
+across these packages. For example, the required confidence interval width
+is specified using \code{ci} argument in \code{parameters::model_parameters}, while
+using \code{conf.level} in \code{broom::tidy}.}
 }
 \value{
 A data frame of indices related to the model's parameters.
 }
 \description{
+\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
+
 Computes parameters for regression models.
 }
 \details{
 The function will attempt to get these details first using
-\code{\link[parameters:model_parameters]{parameters::model_parameters()}} and then using \code{\link[broom:reexports]{broom::tidy()}}.
+\code{\link[parameters:model_parameters]{parameters::model_parameters()}}, and if this fails, then using
+\code{\link[broom:reexports]{broom::tidy()}}.
 }
 \examples{
 set.seed(123)
