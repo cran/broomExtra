@@ -1,3 +1,7 @@
+# broomExtra 4.2.1
+
+  - Removes `lifecycle` from `Imports` to get rid of `NOTE` in CRAN daily checks.
+
 # broomExtra 4.2.0
 
   - The tests are no longer skipped on `CRAN`.
