@@ -3,7 +3,9 @@
 test_that(
   desc = "hybrid methods works",
   code = {
+    options(tibble.width = Inf)
     library(lme4)
+
     # merMord
     set.seed(123)
     lmm_mod <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
@@ -59,11 +61,13 @@ test_that(
 
     # p-value check
     library(MASS)
+    set.seed(123)
     mod <- rlm(stack.loss ~ ., stackloss)
     df_rlm <- tidy_parameters(mod)
     df <- suppressMessages(suppressWarnings(tidy_parameters(tidy(mod))))
 
     # test
+    expect_snapshot(df_rlm)
     expect_equal(dim(df_rlm)[[1]], 4L)
     expect_s3_class(df, "tbl_df")
 

@@ -12,20 +12,11 @@ glance(x, ...)
 \item{...}{other arguments passed to methods}
 }
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
-
 Checks if a \code{glance} method exits for a given object, either in \code{broom} or in
 \code{broom.mixed}. If it does, return the model summary dataframe, if not, return
 a \code{NULL}. In this case, you can try the \code{\link[=glance_performance]{glance_performance()}}
 function.
 }
-\section{Methods}{
-
-
-\Sexpr[stage=render,results=rd]{generics:::methods_rd("glance")}
-
-}
-
 \examples{
 set.seed(123)
 lm.mod <- lm(Sepal.Length ~ Species, iris)

@@ -12,7 +12,6 @@
 #' @importFrom dplyr group_by_at ungroup mutate group_modify
 #'
 #' @inherit tidy return value
-#' @inheritSection tidy Methods
 #'
 #' @seealso \code{\link{tidy}}
 #'
@@ -43,7 +42,7 @@ grouped_tidy <- function(data,
     model <- ..f(.y = ..., data = .x)
 
     # variation on `do.call` to call function with list of arguments
-    rlang::exec(.fn = broomExtra::tidy, model, !!!tidy.args)
+    rlang::exec(broomExtra::tidy, model, !!!tidy.args)
   }
 
   # dataframe with grouped analysis results
@@ -60,7 +59,6 @@ grouped_tidy <- function(data,
 #' @importFrom dplyr group_by_at ungroup mutate group_modify
 #'
 #' @inherit glance return value
-#' @inheritSection glance Methods
 #'
 #' @seealso \code{\link{glance}}
 #'
@@ -89,7 +87,7 @@ grouped_glance <- function(data,
     model <- ..f(.y = ..., data = .x)
 
     # variation on `do.call` to call function with list of arguments
-    rlang::exec(.fn = broomExtra::glance, model)
+    rlang::exec(broomExtra::glance, model)
   }
 
   # dataframe with grouped analysis results
@@ -107,7 +105,6 @@ grouped_glance <- function(data,
 #' @importFrom dplyr group_by_at ungroup mutate group_modify
 #'
 #' @inherit augment return value
-#' @inheritSection augment Methods
 #'
 #' @seealso \code{\link{augment}}
 #'
@@ -137,7 +134,7 @@ grouped_augment <- function(data,
     model <- ..f(.y = ..., data = .x)
 
     # variation on `do.call` to call function with list of arguments
-    rlang::exec(.fn = broomExtra::augment, model, !!!augment.args)
+    rlang::exec(broomExtra::augment, model, !!!augment.args)
   }
 
   # dataframe with grouped analysis results
