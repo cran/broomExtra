@@ -1,5 +1,6 @@
-#' @title Tidy output from grouped analysis of any function that has `data`
-#'   argument in its function call.
+#' @title Grouped tidy analysis
+#' @description Tidy output from grouped analysis of any function that has
+#'   `data` argument in its function call
 #' @name grouped_tidy
 #'
 #' @param data Dataframe (or tibble) from which variables are to be taken.
@@ -8,8 +9,8 @@
 #' @inheritParams rlang::exec
 #' @param tidy.args A list of arguments to be used in the relevant `S3` method.
 #'
-#' @importFrom rlang !! !!! exec enquos
-#' @importFrom dplyr group_by_at ungroup mutate group_modify
+#' @import rlang
+#' @import dplyr
 #'
 #' @inherit tidy return value
 #'
@@ -17,10 +18,11 @@
 #'
 #' @examples
 #' set.seed(123)
+#' library(dplyr)
 #'
 #' # linear mixed effects model
-#' broomExtra::grouped_tidy(
-#'   data = dplyr::mutate(MASS::Aids2, interval = death - diag),
+#' grouped_tidy(
+#'   data = mutate(MASS::Aids2, interval = death - diag),
 #'   grouping.vars = sex,
 #'   ..f = lme4::lmer,
 #'   formula = interval ~ age + (1 | status),
@@ -42,21 +44,19 @@ grouped_tidy <- function(data,
     model <- ..f(.y = ..., data = .x)
 
     # variation on `do.call` to call function with list of arguments
-    rlang::exec(broomExtra::tidy, model, !!!tidy.args)
+    exec(broomExtra::tidy, model, !!!tidy.args)
   }
 
   # dataframe with grouped analysis results
-  grouped_cleanup(data, rlang::enquos(grouping.vars), tidy_group)
+  grouped_cleanup(data, enquos(grouping.vars), tidy_group)
 }
 
-#' @title Model summary output from grouped analysis of any function that has
-#'   `data` argument in its function call.
+#' @title Grouped model summary
+#' @description Model summary output from grouped analysis of any function that
+#'   has `data` argument in its function call.
 #' @name grouped_glance
 #'
 #' @inheritParams grouped_tidy
-#'
-#' @importFrom rlang !! !!! exec enquos
-#' @importFrom dplyr group_by_at ungroup mutate group_modify
 #'
 #' @inherit glance return value
 #'
@@ -64,10 +64,11 @@ grouped_tidy <- function(data,
 #'
 #' @examples
 #' set.seed(123)
+#' library(dplyr)
 #'
 #' # linear mixed effects model
-#' broomExtra::grouped_glance(
-#'   data = dplyr::mutate(MASS::Aids2, interval = death - diag),
+#' grouped_glance(
+#'   data = mutate(MASS::Aids2, interval = death - diag),
 #'   grouping.vars = sex,
 #'   ..f = lme4::lmer,
 #'   formula = interval ~ age + (1 | status),
@@ -87,22 +88,20 @@ grouped_glance <- function(data,
     model <- ..f(.y = ..., data = .x)
 
     # variation on `do.call` to call function with list of arguments
-    rlang::exec(broomExtra::glance, model)
+    exec(broomExtra::glance, model)
   }
 
   # dataframe with grouped analysis results
-  grouped_cleanup(data, rlang::enquos(grouping.vars), glance_group)
+  grouped_cleanup(data, enquos(grouping.vars), glance_group)
 }
 
-#' @title Augmented data from grouped analysis of any function that has `data`
-#'   argument in its function call.
+#' @title Grouped augment
+#' @description Augmented data from grouped analysis of any function that has
+#'   `data` argument in its function call.
 #' @name grouped_augment
 #'
 #' @inheritParams grouped_tidy
 #' @param augment.args A list of arguments to be used in the relevant `S3` method.
-#'
-#' @importFrom rlang !! !!! exec enquos
-#' @importFrom dplyr group_by_at ungroup mutate group_modify
 #'
 #' @inherit augment return value
 #'
@@ -110,10 +109,11 @@ grouped_glance <- function(data,
 #'
 #' @examples
 #' set.seed(123)
+#' library(dplyr)
 #'
 #' # linear mixed effects model
-#' broomExtra::grouped_augment(
-#'   data = dplyr::mutate(MASS::Aids2, interval = death - diag),
+#' grouped_augment(
+#'   data = mutate(MASS::Aids2, interval = death - diag),
 #'   grouping.vars = sex,
 #'   ..f = lme4::lmer,
 #'   formula = interval ~ age + (1 | status),
@@ -134,11 +134,11 @@ grouped_augment <- function(data,
     model <- ..f(.y = ..., data = .x)
 
     # variation on `do.call` to call function with list of arguments
-    rlang::exec(broomExtra::augment, model, !!!augment.args)
+    exec(broomExtra::augment, model, !!!augment.args)
   }
 
   # dataframe with grouped analysis results
-  grouped_cleanup(data, rlang::enquos(grouping.vars), augment_group)
+  grouped_cleanup(data, enquos(grouping.vars), augment_group)
 }
 
 
@@ -146,7 +146,7 @@ grouped_augment <- function(data,
 
 grouped_cleanup <- function(data, .vars, .f) {
   data %>%
-    dplyr::group_by_at(.vars, .drop = TRUE) %>%
-    dplyr::group_modify(.f) %>%
-    dplyr::ungroup(.)
+    group_by_at(.vars, .drop = TRUE) %>%
+    group_modify(.f) %>%
+    ungroup()
 }

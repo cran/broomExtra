@@ -2,8 +2,7 @@
 % Please edit documentation in R/grouped_generics.R
 \name{grouped_augment}
 \alias{grouped_augment}
-\title{Augmented data from grouped analysis of any function that has \code{data}
-argument in its function call.}
+\title{Grouped augment}
 \usage{
 grouped_augment(data, grouping.vars, ..f, ..., augment.args = list())
 }
@@ -22,15 +21,16 @@ grouped_augment(data, grouping.vars, ..f, ..., augment.args = list())
 A \code{\link[tibble:tibble]{tibble::tibble()}} with information about data points.
 }
 \description{
-Augmented data from grouped analysis of any function that has \code{data}
-argument in its function call.
+Augmented data from grouped analysis of any function that has
+\code{data} argument in its function call.
 }
 \examples{
 set.seed(123)
+library(dplyr)
 
 # linear mixed effects model
-broomExtra::grouped_augment(
-  data = dplyr::mutate(MASS::Aids2, interval = death - diag),
+grouped_augment(
+  data = mutate(MASS::Aids2, interval = death - diag),
   grouping.vars = sex,
   ..f = lme4::lmer,
   formula = interval ~ age + (1 | status),

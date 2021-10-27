@@ -2,7 +2,7 @@
 % Please edit documentation in R/generics.R
 \name{tidy}
 \alias{tidy}
-\title{Retrieve tidy dataframe if it exists.}
+\title{Retrieve tidy dataframe if it exists}
 \usage{
 tidy(x, ...)
 }
@@ -15,8 +15,8 @@ tidy(x, ...)
 A \code{\link[tibble:tibble]{tibble::tibble()}} with information about model components.
 }
 \description{
-Checks if a \code{tidy} method exits for a given object, either in \code{broom} or in
-\code{broom.mixed}. If it does, it turn an object into a tidy tibble, if not,
+Checks if a \code{tidy} method exits for a given object, either in \code{{broom}} or in
+\code{{broom.mixed}}. If it does, it turn an object into a tidy tibble, if not,
 return a \code{NULL}. In this case, you can try the
 \code{\link[=tidy_parameters]{tidy_parameters()}} function.
 }
