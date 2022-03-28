@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `{broomExtra}`: Enhancements for `{broom}` and `{easystats}` Package Families
+## `{broomExtra}`: Enhancements for `{broom}` and `{easystats}` Package Families
 
 [![CRAN_Release_Badge](https://www.r-pkg.org/badges/version-ago/broomExtra)](https://CRAN.R-project.org/package=broomExtra)
 [![pkgdown](https://github.com/IndrajeetPatil/broomExtra/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/broomExtra/actions)
@@ -32,14 +32,14 @@ these benefits):
 If you want to add support for a regression model, the natural place to
 do this would be to contribute either to `{broom}` or to `{parameters}`.
 
-# Installation
+## Installation
 
 | Type        | Source | Command                                                |
 |-------------|--------|--------------------------------------------------------|
 | Release     | CRAN   | `install.packages("broomExtra")`                       |
 | Development | GitHub | `remotes::install_github("IndrajeetPatil/broomExtra")` |
 
-# Lifecycle
+## Lifecycle
 
 | Function                                            | Lifecycle                                                                                                                       |
 |-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -48,7 +48,7 @@ do this would be to contribute either to `{broom}` or to `{parameters}`.
 | `tidy`, `glance`, `augment`                         | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
 | `grouped_tidy`, `grouped_glance`, `grouped_augment` | [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html) |
 
-# Hybrid generics
+## Hybrid generics
 
 The `{broom}`-family of packages are not the only ones which return such
 tidy summaries for model parameters and model performance. The
@@ -79,7 +79,7 @@ Benefits of using hybrid generics
     easier to work with while writing wrapper functions around
     `broomExtra::tidy` or `parameters::model_parameters`.
 
-# Generic functions
+## Generic functions
 
 Currently, `S3` methods for mixed-effects model objects are included in
 the `{broom.mixed}` package, while the rest of the object classes are
@@ -96,7 +96,7 @@ about this, as calling
 search the appropriate method from these two packages and return the
 results.
 
-## tidy dataframe
+#### tidy dataframe
 
 Let’s get a tidy tibble back containing results from various regression
 models.
@@ -108,29 +108,29 @@ library(ordinal)
 library(broomExtra)
 library(dplyr)
 
-# mixed-effects models (`{broom.mixed}` will be used)
+## mixed-effects models (`{broom.mixed}` will be used)
 lmm.mod <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 broomExtra::tidy(x = lmm.mod, effects = "fixed")
-#> # A tibble: 2 x 5
+#> # A tibble: 2 × 5
 #>   effect term        estimate std.error statistic
 #>   <chr>  <chr>          <dbl>     <dbl>     <dbl>
 #> 1 fixed  (Intercept)    251.       6.82     36.8 
 #> 2 fixed  Days            10.5      1.55      6.77
 
-# linear model (`{broom}` will be used)
+## linear model (`{broom}` will be used)
 lm.mod <- lm(Reaction ~ Days, sleepstudy)
 broomExtra::tidy(lm.mod, conf.int = TRUE)
-#> # A tibble: 2 x 7
+#> # A tibble: 2 × 7
 #>   term        estimate std.error statistic  p.value conf.low conf.high
 #>   <chr>          <dbl>     <dbl>     <dbl>    <dbl>    <dbl>     <dbl>
 #> 1 (Intercept)    251.       6.61     38.0  2.16e-87   238.       264. 
 #> 2 Days            10.5      1.24      8.45 9.89e-15     8.02      12.9
 
-# another example with `{broom}`
-# cumulative Link Models
+## another example with `{broom}`
+## cumulative Link Models
 clm.mod <- clm(rating ~ temp * contact, data = wine)
 broomExtra::tidy(x = clm.mod, exponentiate = TRUE)
-#> # A tibble: 7 x 6
+#> # A tibble: 7 × 6
 #>   term                estimate std.error statistic  p.value coef.type
 #>   <chr>                  <dbl>     <dbl>     <dbl>    <dbl> <chr>    
 #> 1 1|2                    0.244     0.545    -2.59  9.66e- 3 intercept
@@ -141,12 +141,12 @@ broomExtra::tidy(x = clm.mod, exponentiate = TRUE)
 #> 6 contactyes             3.85      0.660     2.04  4.13e- 2 location 
 #> 7 tempwarm:contactyes    1.43      0.924     0.389 6.97e- 1 location
 
-# unsupported object (the function will return `NULL` in such cases)
+## unsupported object (the function will return `NULL` in such cases)
 broomExtra::tidy(list(1, c("x", "y")))
 #> NULL
 ```
 
-## model summaries
+#### model summaries
 
 Getting a `tibble` containing model summary and other performance
 measures.
@@ -156,18 +156,18 @@ set.seed(123)
 library(lme4)
 library(ordinal)
 
-# mixed-effects model
+## mixed-effects model
 lmm.mod <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 broomExtra::glance(lmm.mod)
-#> # A tibble: 1 x 6
-#>   sigma logLik   AIC   BIC REMLcrit df.residual
-#>   <dbl>  <dbl> <dbl> <dbl>    <dbl>       <int>
-#> 1  25.6  -872. 1756. 1775.    1744.         174
+#> # A tibble: 1 × 7
+#>    nobs sigma logLik   AIC   BIC REMLcrit df.residual
+#>   <int> <dbl>  <dbl> <dbl> <dbl>    <dbl>       <int>
+#> 1   180  25.6  -872. 1756. 1775.    1744.         174
 
-# linear model
+## linear model
 lm.mod <- lm(Reaction ~ Days, sleepstudy)
 broomExtra::glance(lm.mod)
-#> # A tibble: 1 x 12
+#> # A tibble: 1 × 12
 #>   r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC
 #>       <dbl>         <dbl> <dbl>     <dbl>    <dbl> <dbl>  <dbl> <dbl> <dbl>
 #> 1     0.286         0.282  47.7      71.5 9.89e-15     1  -950. 1906. 1916.
@@ -175,21 +175,21 @@ broomExtra::glance(lm.mod)
 #>      <dbl>       <int> <int>
 #> 1  405252.         178   180
 
-# another example with `{broom}`
-# cumulative Link Models
+## another example with `{broom}`
+## cumulative Link Models
 clm.mod <- clm(rating ~ temp * contact, data = wine)
 broomExtra::glance(clm.mod)
-#> # A tibble: 1 x 6
+#> # A tibble: 1 × 6
 #>     edf   AIC   BIC logLik   df.residual  nobs
 #>   <int> <dbl> <dbl> <logLik>       <dbl> <dbl>
 #> 1     7  187.  203. -86.4162          65    72
 
-# in case no glance method is available (`NULL` will be returned)
+## in case no glance method is available (`NULL` will be returned)
 broomExtra::glance(acf(lh, plot = FALSE))
 #> NULL
 ```
 
-## augmented dataframe
+#### augmented dataframe
 
 Getting a `tibble` by augmenting data with information from an object.
 
@@ -198,10 +198,10 @@ set.seed(123)
 library(lme4)
 library(ordinal)
 
-# mixed-effects model
+## mixed-effects model
 lmm.mod <- lmer(Reaction ~ Days + (Days | Subject), sleepstudy)
 broomExtra::augment(lmm.mod)
-#> # A tibble: 180 x 14
+#> # A tibble: 180 × 14
 #>    Reaction  Days Subject .fitted  .resid   .hat .cooksd .fixed   .mu .offset
 #>       <dbl> <dbl> <fct>     <dbl>   <dbl>  <dbl>   <dbl>  <dbl> <dbl>   <dbl>
 #>  1     250.     0 308        254.   -4.10 0.229  0.00496   251.  254.       0
@@ -226,12 +226,12 @@ broomExtra::augment(lmm.mod)
 #>  8        1        1        1 -101.  
 #>  9        1        1        1   19.6 
 #> 10        1        1        1   35.7 
-#> # ... with 170 more rows
+#> # … with 170 more rows
 
-# linear model
+## linear model
 lm.mod <- lm(Reaction ~ Days, sleepstudy)
 broomExtra::augment(lm.mod)
-#> # A tibble: 180 x 8
+#> # A tibble: 180 × 8
 #>    Reaction  Days .fitted .resid    .hat .sigma   .cooksd .std.resid
 #>       <dbl> <dbl>   <dbl>  <dbl>   <dbl>  <dbl>     <dbl>      <dbl>
 #>  1     250.     0    251.  -1.85 0.0192    47.8 0.0000149    -0.0390
@@ -244,13 +244,13 @@ broomExtra::augment(lm.mod)
 #>  8     290.     7    325. -34.5  0.00976   47.8 0.00261      -0.727 
 #>  9     431.     8    335.  95.4  0.0138    47.3 0.0284        2.01  
 #> 10     466.     9    346. 121.   0.0192    47.0 0.0639        2.56  
-#> # ... with 170 more rows
+#> # … with 170 more rows
 
-# another example with `{broom}`
-# cumulative Link Models
+## another example with `{broom}`
+## cumulative Link Models
 clm.mod <- clm(rating ~ temp * contact, data = wine)
 broomExtra::augment(x = clm.mod, newdata = wine, type.predict = "prob")
-#> # A tibble: 72 x 7
+#> # A tibble: 72 × 7
 #>    response rating temp  contact bottle judge .fitted
 #>       <dbl> <ord>  <fct> <fct>   <fct>  <fct>   <dbl>
 #>  1       36 2      cold  no      1      1      0.562 
@@ -263,14 +263,14 @@ broomExtra::augment(x = clm.mod, newdata = wine, type.predict = "prob")
 #>  8       90 5      warm  yes     8      1      0.286 
 #>  9       17 1      cold  no      1      2      0.196 
 #> 10       22 2      cold  no      2      2      0.562 
-#> # ... with 62 more rows
+#> # … with 62 more rows
 
-# in case no augment method is available (`NULL` will be returned)
+## in case no augment method is available (`NULL` will be returned)
 broomExtra::augment(stats::anova(stats::lm(wt ~ am, mtcars)))
 #> NULL
 ```
 
-# `grouped_` variants of generics
+## `grouped_` variants of generics
 
 `grouped` variants of the generic functions (`tidy`, `glance`, and
 `augment`) make it easy to execute the same analysis for all
@@ -279,24 +279,25 @@ functions work only for methods that depend on a `data` argument (e.g.,
 `stats::lm`), but not for functions that don’t (e.g.,
 `stats::prop.test()`).
 
-## `grouped_tidy`
+#### `grouped_tidy`
 
 ``` r
-# to speed up computation, let's use only 50% of the data
+## to speed up computation, let's use only 50% of the data
 set.seed(123)
 library(lme4)
 library(ggplot2)
+library(broomExtra)
 
-# linear model (tidy analysis across grouping combinations)
-broomExtra::grouped_tidy(
-  data = sample_frac(tbl = ggplot2::diamonds, size = 0.5),
+## linear model (tidy analysis across grouping combinations)
+grouped_tidy(
+  data = sample_frac(ggplot2::diamonds, size = 0.5),
   grouping.vars = c(cut, color),
   formula = price ~ carat - 1,
   ..f = stats::lm,
   na.action = na.omit,
   tidy.args = list(quick = TRUE)
 )
-#> # A tibble: 35 x 7
+#> # A tibble: 35 × 7
 #>    cut   color term  estimate std.error statistic   p.value
 #>    <ord> <ord> <chr>    <dbl>     <dbl>     <dbl>     <dbl>
 #>  1 Fair  D     carat    5246.     207.       25.3 4.45e- 41
@@ -309,18 +310,18 @@ broomExtra::grouped_tidy(
 #>  8 Good  D     carat    5207.     115.       45.4 2.66e-145
 #>  9 Good  E     carat    5102.      91.9      55.5 2.50e-206
 #> 10 Good  F     carat    5151.      92.4      55.8 1.76e-204
-#> # ... with 25 more rows
+#> # … with 25 more rows
 
-# linear mixed effects model (tidy analysis across grouping combinations)
-broomExtra::grouped_tidy(
-  data = sample_frac(tbl = ggplot2::diamonds, size = 0.5),
+## linear mixed effects model (tidy analysis across grouping combinations)
+grouped_tidy(
+  data = sample_frac(ggplot2::diamonds, size = 0.5),
   grouping.vars = cut,
   ..f = lme4::lmer,
   formula = price ~ carat + (carat | color) - 1,
   control = lme4::lmerControl(optimizer = "bobyqa"),
   tidy.args = list(conf.int = TRUE, conf.level = 0.99)
 )
-#> # A tibble: 25 x 9
+#> # A tibble: 25 × 9
 #>    cut   effect   group    term                   estimate std.error statistic
 #>    <ord> <chr>    <chr>    <chr>                     <dbl>     <dbl>     <dbl>
 #>  1 Fair  fixed    <NA>     carat                  3800.         228.      16.7
@@ -345,24 +346,24 @@ broomExtra::grouped_tidy(
 #>  8      NA        NA 
 #>  9      NA        NA 
 #> 10      NA        NA 
-#> # ... with 15 more rows
+#> # … with 15 more rows
 ```
 
-## `grouped_glance`
+#### `grouped_glance`
 
 ``` r
-# to speed up computation, let's use only 50% of the data
+## to speed up computation, let's use only 50% of the data
 set.seed(123)
 
-# linear model (model summaries across grouping combinations)
-broomExtra::grouped_glance(
-  data = sample_frac(tbl = ggplot2::diamonds, size = 0.5),
+## linear model (model summaries across grouping combinations)
+grouped_glance(
+  data = sample_frac(ggplot2::diamonds, size = 0.5),
   grouping.vars = c(cut, color),
   formula = price ~ carat - 1,
   ..f = stats::lm,
   na.action = na.omit
 )
-#> # A tibble: 35 x 14
+#> # A tibble: 35 × 14
 #>    cut   color r.squared adj.r.squared sigma statistic p.value    df logLik
 #>    <ord> <ord>     <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>  <dbl>
 #>  1 Fair  D         0.884         0.883 1857.        NA      NA    NA  -760.
@@ -387,40 +388,40 @@ broomExtra::grouped_glance(
 #>  8 5966. 5974. 1001144317.         335   336
 #>  9 8173. 8181. 1291712250.         461   462
 #> 10 7998. 8006. 1267954026.         451   452
-#> # ... with 25 more rows
+#> # … with 25 more rows
 
-# linear mixed effects model (model summaries across grouping combinations)
-broomExtra::grouped_glance(
-  data = sample_frac(tbl = ggplot2::diamonds, size = 0.5),
+## linear mixed effects model (model summaries across grouping combinations)
+grouped_glance(
+  data = sample_frac(ggplot2::diamonds, size = 0.5),
   grouping.vars = cut,
   ..f = lme4::lmer,
   formula = price ~ carat + (carat | color) - 1,
   control = lme4::lmerControl(optimizer = "bobyqa")
 )
-#> # A tibble: 5 x 7
-#>   cut       sigma  logLik     AIC     BIC REMLcrit df.residual
-#>   <ord>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>       <int>
-#> 1 Fair      1830.  -7257.  14525.  14548.   14515.         806
-#> 2 Good      1373. -21027.  42064.  42093.   42054.        2425
-#> 3 Very Good 1362. -51577. 103165. 103198.  103155.        5964
-#> 4 Premium   1557. -60736. 121482. 121516.  121472.        6917
-#> 5 Ideal     1257. -92766. 185542. 185579.  185532.       10833
+#> # A tibble: 5 × 8
+#>   cut        nobs sigma  logLik     AIC     BIC REMLcrit df.residual
+#>   <ord>     <int> <dbl>   <dbl>   <dbl>   <dbl>    <dbl>       <int>
+#> 1 Fair        811 1830.  -7257.  14525.  14548.   14515.         806
+#> 2 Good       2430 1373. -21027.  42064.  42093.   42054.        2425
+#> 3 Very Good  5969 1362. -51577. 103165. 103198.  103155.        5964
+#> 4 Premium    6922 1557. -60736. 121482. 121516.  121472.        6917
+#> 5 Ideal     10838 1257. -92766. 185542. 185579.  185532.       10833
 ```
 
-## `grouped_augment`
+#### `grouped_augment`
 
 ``` r
-# to speed up computation, let's use only 50% of the data
+## to speed up computation, let's use only 50% of the data
 set.seed(123)
 
-# linear model
-broomExtra::grouped_augment(
+## linear model
+grouped_augment(
   data = ggplot2::diamonds,
   grouping.vars = c(cut, color),
   ..f = stats::lm,
   formula = price ~ carat - 1
 )
-#> # A tibble: 53,940 x 10
+#> # A tibble: 53,940 × 10
 #>    cut   color price carat .fitted .resid    .hat .sigma  .cooksd .std.resid
 #>    <ord> <ord> <int> <dbl>   <dbl>  <dbl>   <dbl>  <dbl>    <dbl>      <dbl>
 #>  1 Fair  D      2848  0.75   3795.  -947. 0.00342  1822. 0.000933     -0.522
@@ -433,17 +434,17 @@ broomExtra::grouped_augment(
 #>  8 Fair  D      3079  0.91   4605. -1526. 0.00503  1820. 0.00358      -0.841
 #>  9 Fair  D      3205  0.9    4554. -1349. 0.00492  1821. 0.00274      -0.744
 #> 10 Fair  D      3205  0.9    4554. -1349. 0.00492  1821. 0.00274      -0.744
-#> # ... with 53,930 more rows
+#> # … with 53,930 more rows
 
-# linear mixed-effects model
-broomExtra::grouped_augment(
-  data = sample_frac(tbl = ggplot2::diamonds, size = 0.5),
+## linear mixed-effects model
+grouped_augment(
+  data = sample_frac(ggplot2::diamonds, size = 0.5),
   grouping.vars = cut,
   ..f = lme4::lmer,
   formula = price ~ carat + (carat | color) - 1,
   control = lme4::lmerControl(optimizer = "bobyqa")
 )
-#> # A tibble: 26,970 x 15
+#> # A tibble: 26,970 × 15
 #>    cut   price carat color .fitted .resid    .hat   .cooksd .fixed   .mu .offset
 #>    <ord> <int> <dbl> <ord>   <dbl>  <dbl>   <dbl>     <dbl>  <dbl> <dbl>   <dbl>
 #>  1 Fair   8818  1.52 H       7001.  1817. 0.00806 0.00837    3519. 7001.       0
@@ -468,12 +469,12 @@ broomExtra::grouped_augment(
 #>  8        1        1        1  -183.
 #>  9        1        1        1  -448.
 #> 10        1        1        1 -1618.
-#> # ... with 26,960 more rows
+#> # … with 26,960 more rows
 ```
 
-# Acknowledgments
+## Acknowledgments
 
 The hexsticker was generously designed by Sarah Otterstetter (Max Planck
 Institute for Human Development, Berlin). Thanks are also due to the
 maintainers and contributors to `{broom}`- and `{easystats}`-package
-families who have indulged in all my feature requests. 😄
+families who have indulged in all my feature requests!
