@@ -1,7 +1,7 @@
-cea7fc28df066b3eed6ac7c5d55577d7 *DESCRIPTION
+328376138d3e32338b5111693efcc750 *DESCRIPTION
 1ebbd3e34237af26da5dc08a4e440464 *LICENSE
 d9224abd5e51321febe54f238d717934 *NAMESPACE
-e0e2c109d3abb08fb52cb186257d7c72 *NEWS.md
+4e68b778c07c3cabf36112052bd4d96f *NEWS.md
 6b4d0cea5933522079f55006169b6749 *R/generics.R
 01c8bf797249e7239960bd50dabf1b71 *R/grouped_generics.R
 4cb030ce57c3d5f608e3e2a4876b5ef8 *R/hybrid_easystats.R
@@ -21,7 +21,7 @@ dbdb483866721a1d6ae9de3b72989683 *man/tidy.Rd
 50f330eeca8db092d6807e04457bd06d *tests/spelling.R
 515f939c68b129921ba3c27a11884218 *tests/testthat.R
 efc73a6197a9154b7528af8ee0199d2f *tests/testthat/_snaps/grouped_generics.md
-7182ee33cf2c41db6bfa0286af39d411 *tests/testthat/_snaps/hybrid_generics.md
+74e7429182f7ee8dc197da1628cb0852 *tests/testthat/_snaps/hybrid_generics.md
 9f5b4bbc3a77fbbd22ddc89900f49c9a *tests/testthat/test-generics.R
-f09587c3e6c41334930b7e30bad5e4c2 *tests/testthat/test-grouped_generics.R
-9ed20887b058aef204c2a59f1a2049cb *tests/testthat/test-hybrid_generics.R
+5b0b2baa39807fe8d067d8634f5ba14c *tests/testthat/test-grouped_generics.R
+eeef01a389192854646b7fe0601163f5 *tests/testthat/test-hybrid_generics.R
